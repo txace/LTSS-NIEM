@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:nc="http://release.niem.gov/niem/niem-core/3.0/" xmlns:ltsscore="http://ltss.core.hhsc.state.tx.us/ltsscore/1.1" xmlns:niemxsd="http://release.niem.gov/niem/proxy/xsd/3.0/" xmlns:ltssee="http://ltss.ee.hhsc.state.tx.us/ltssee/1.1" xmlns:s="http://release.niem.gov/niem/structures/3.0/" xmlns:ltsstypes="http://ltss.types.hhsc.state.tx.us/ltsstypes/1.1" targetNamespace="http://ltss.ee.hhsc.state.tx.us/ltssee/1.1" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="niem/proxy/xsd/3.0/xs.xsd" namespace="http://release.niem.gov/niem/proxy/xsd/3.0/" />
+  <xsd:import schemaLocation="ltsstypes.xsd" namespace="http://ltss.types.hhsc.state.tx.us/ltsstypes/1.1" />
+  <xsd:import schemaLocation="niem/niem-core/3.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/3.0/" />
+  <xsd:import schemaLocation="ltsscore.xsd" namespace="http://ltss.core.hhsc.state.tx.us/ltsscore/1.1" />
+  <xsd:import schemaLocation="niem/structures/3.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/3.0/" />
+  <xsd:complexType name="CurrentInterestListType">
+    <xsd:annotation>
+      <xsd:documentation>This complex type captures Interest list
+				information for the matching individual from CSIL system.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element ref="ltsscore:PersonCsilID" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="interestListName" type="nc:TextType" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CurrentInterestList" type="ltssee:CurrentInterestListType">
+    <xsd:annotation>
+      <xsd:documentation>Complex type encapsulating
+				CurrentInterestListType.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="EnrollmentDateRange" type="nc:DateRangeType">
+    <xsd:annotation>
+      <xsd:documentation>Complex type encapsulating NIEM
+				DateRangeType.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CurrentEnrollmentType">
+    <xsd:annotation>
+      <xsd:documentation>This complex type captures other MCO specific
+				details like &lt;br
+				/&gt;
+				ProgramName&lt;br /&gt;
+				PlanID&lt;br /&gt;
+				PlanName&lt;br /&gt;
+				PlanEnrollmentDateRange.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="EnrollmentID" type="nc:IdentificationType" />
+          <xsd:element minOccurs="0" name="ProgramName" type="nc:TextType" />
+          <xsd:element minOccurs="0" name="PlanName" type="nc:TextType" />
+          <xsd:element minOccurs="0" ref="ltssee:EnrollmentDateRange" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CurrentEnrollment" type="ltssee:CurrentEnrollmentType">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates
+				CurrentEnrollmentType.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ReferralPriorityCode" type="ltsstypes:ReferralPriorityCodeType" />
+  <xsd:complexType name="ScreeningQuestionnaireType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element name="VersionIndicator" type="niemxsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Version number of the questionnaire.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantIntellectualDisabilityIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								1 a. Has an
+								intellectual disability (IQ is less than 70).
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantAutismOrPervasiveDisorderIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								1 b. Has an
+								autism spectrum disorder. </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantCognitiveImpairmentIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								1 c. Has
+								dementia (not able to think clearly), Alzheimer's disease, a
+								brain injury, or other cognitive impairment.
+			</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantRequiresAssistanceMeetingPersonalNeedsIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								1 d. Needs
+								help with daily living needs such as bathing, dressing, eating,
+								shopping, laundry, or making meals.
+			</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantCaregiverForExistingConditionsIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>This datatype captures the answer for
+								applicant if he/she is a Caregiver of someone with any of the
+								conditions listed below:
+								1 e. Cares for someone with one or more
+								of the conditions listed above (a. to d.) and doesn't get paid
+								to give care.
+			</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantGetsCareIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>
+								1 f. Gets care from someone who: (1) helps
+								with daily living
+								needs such as bathing, dressing, eating,
+								shopping, laundry, and
+								making meals, and (2) doesn't get paid to
+								give care.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantMentalHealthDiagnosisIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								1 g. Has or
+								had a mental health diagnosis.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantNeedsAssistanceCallingForHelpIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								1 h. Lives
+								alone or doesn't have anyone to call for help in case of
+								emergency.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantPhysicalDisabilityIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								1 i. Has a
+								physical disability (for example, can't walk, can't see, or
+								can't hear) and needs help paying for items or services needed
+								for medical reasons.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantSubstanceAbuseIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								1 j. Has or
+								had a diagnosis of alcoholism or drug abuse.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantHasQuestionsAboutMedicareOrLTCInsuranceIndicator" type="ltsstypes:ApplicantAnswerType">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								2. Does Homer
+								have any questions about Medicare or private long-term care
+								insurance?
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantDroppedActivitiesAndInterestsIndicator" type="ltsstypes:ApplicantAnswerType">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								3. Has Homer
+								dropped many activities and interests lately?
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantFeelsFullOfEnergyIndicator" type="ltsstypes:ApplicantAnswerType">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								4. Does Homer
+								feel full of energy?
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantNumberOfInstancesOfAlcoholConsumptionInPastOneYearCode" type="ltsstypes:AlcoholUsagePatternType">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								5. How many
+								times in the past 12 months has Homer had 3 or more drinks of
+								alcohol in a single sitting? [the ‘number’ of drinks would vary
+								based on age and Gender][current values: Age 55+ Female = 3 or
+								more, Age 55+ Male = 4 or more, Age less than 55 Female = 4 or
+								more, Age less than 55 Male = 5 or more]
+								□ 0
+								□ 1
+								□ 2
+								□ 3
+								□ 4
+								□ 5 or
+								more
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantLikelyhoodOfMovingToNursingFacilityCode" type="ltsstypes:LikelyhoodOfMoveToNursingFacilityType">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								6. If Homer
+								can't get care at home, how likely is Homer to move into a
+								nursing home?
+								 Very likely  Likely  Somewhat likely  Not
+								likely  A nursing
+								home is not an option that is being considered
+								 No answer
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantThinksWonderfulToBeAliveNowIndicator" type="ltsstypes:ApplicantAnswerType">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								7. Does Homer
+								think it is wonderful to be alive now?
+								 Yes  No  No answer
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantHasNarcoticsPrescriptionInPast30DaysIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								8. During the
+								past 30 days, has Homer taken any of the following? (check all
+								that apply)
+								Medicines for pain or problems like back pain, muscle
+								pain, headaches, arthritis, or fibromyalgia. Don't count: (1)
+								vitamins, (2) herbs, (3) natural remedies, or (4)
+								over-the-counter medicines such as aspirin, ibuprofen, TYLENOL,
+								Advil, or Aleve.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantHasDiabetesMedicationInPast30DaysIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								8. During the
+								past 30 days, has Homer taken any of the following? (check all
+								that apply)
+								Medicine for diabetes.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantHasMedicationForSleepInPast30DaysIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								8. During the
+								past 30 days, has Homer taken any of the following? (check all
+								that apply)
+								Medicine to help with sleep. Don't count: (1)
+								vitamins, (2) herbs, (3) natural remedies, or (4)
+								over-the-counter medicines such as melatonin, Benadryl, TYLENOL
+								PM, or Advil PM.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantHasMedicationForAnxietyInPast30DaysIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								8. During the
+								past 30 days, has Homer taken any of the following? (check all
+								that apply)
+								Medicine for anxiety, nerves, or emotional upset.
+								Don't count (1) vitamins, (2) herbs, (3) natural remedies, or
+								(4) over-the-counter medicines.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantHasMedicationForHeartDiseasesOrBloodPressureInPast30DaysIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								8. During the
+								past 30 days, has Homer taken any of the following? (check all
+								that apply)
+								Medicine for heart disease or high blood pressure.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantHasConsumedAlcoholInPast30DaysIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								8. During the
+								past 30 days, has Homer taken any of the following? (check all
+								that apply)
+								Alcohol - beer, wine, wine cooler, or hard liquor.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantFeelsLifeIsEmptyIndicator" type="ltsstypes:ApplicantAnswerType">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								9. Does Homer
+								feel that [populate with "his or "her" based on the gender given
+								for this person] life is empty?
+								 Yes  No  No answer
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantInterestedInSTARPLUSIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								10. Programs
+								you think might help Homer.
+								Helps older adults and people age 21
+								and older with disabilities get
+								support services in a home
+								setting. (STAR+PLUS Waiver)
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantInterestedInPACEIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								10. Programs
+								you think might help Homer.
+								Helps people living in certain Texas
+								areas get support services. See
+								the list of areas . (Program for
+								All-inclusive Care for the
+								Elderly - PACE)
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantInterestedInCLASSIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								10. Programs
+								you think might help Homer.
+								Helps people with developmental
+								disabilities get support services. (Community Living Assistance
+								and Support Services Waiver - CLASS)
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantInterestednDBMDIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								10. Programs
+								you think might help Homer.
+								Helps get support services for people
+								who: (1) are deaf and blind,
+								and (2) have another disability that
+								keeps them from living on
+								their own. (Deaf Blind with Multiple
+								Disabilities Waiver - DBMD)
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="AplicantInterestedInMDCPIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								10. Programs
+								you think might help Homer.
+								Helps get support services to
+								families who are the main caregivers
+								for children and young
+								adults who need help with their medical
+								care. Helps the child or
+								young adult with: (1) moving from a
+								nursing facility to a home
+								setting or (2) staying in a home
+								setting. (Medically Dependent
+								Children Program - MDCP)
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantCaregiverNeedsInformationIndicator" type="ltsstypes:ApplicantAnswerType">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								11. You told
+								us that Homer takes care of someone. Could Homer use help? Help
+								can include: (1) giving Homer a short break - respite services,
+								(2) helping Homer learn more about giving care, or (3) telling
+								Homer about other support services.
+								 Yes  No  No answer
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantGetsCareFromPersonWhoNeedsHelpIndicator" type="ltsstypes:ApplicantAnswerType">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to capture the following
+								screening question, as applicable to the applicant:
+								13. You told
+								us someone helps care for Homer. Does the person who cares for
+								Homer want help? Help can include: (1) giving them a short break
+								- respite services, (2) helping them learn more about giving
+								care, or (3) telling them about other support services.
+								 Yes 
+								No  No answer
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantRequiresLicensedNurseSupervisionIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>DEPRECATED - Data type defined to
+								capture the following
+								screening question, as applicable to the
+								applicant:
+								1 h Have a
+								medical condition that requires a licensed
+								nurse’s
+								supervision,
+								assessment, planning and intervention
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantDeafAndBlindIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>DEPRECATED - Data type defined to
+								capture the following
+								screening question, as applicable to the
+								applicant:
+								1 d. Deaf and
+								blind or has a condition that will lead
+								to this
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantDevelopmentalDisabilityIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>DEPRECATED - Data type defined to
+								indicates if the
+								applicant has consent to release of information
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ApplicantHasConsentToReleaseOfInformationIndicator" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Data type defined to indicates if the
+								applicant has consent to release of information
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ScreeningQuestionnaire" type="ltssee:ScreeningQuestionnaireType" />
+  <xsd:element name="LivesOutsideStateTemporarilyIndicator" type="ltsstypes:LivesOutsideStateTemporarilyType" />
+  <xsd:element name="EnrolledWithHCSIndicator" type="niemxsd:boolean" />
+  <xsd:element name="EnrolledWithDBMBIndicator" type="niemxsd:boolean" />
+  <xsd:element name="EnrolledWithMCOIndicator" type="niemxsd:boolean" />
+  <xsd:element name="AnsweredAtLeastOneScreeningQuestion" type="niemxsd:boolean" />
+  <xsd:element name="ReceivingMedicaidIndicator" type="niemxsd:boolean" />
+  <xsd:element name="CannotBeEnrolledWithManagedCareIndicator" type="niemxsd:boolean" />
+  <xsd:element name="ReferralGenerationCode" type="ltsstypes:ReferralGenerationCodeType" />
+  <xsd:element name="ReferralStatusCode" type="ltsstypes:ReferralStatusCodeType">
+    <xsd:annotation>
+      <xsd:documentation>A kind of referral activity status.
+			</xsd:documentation>
+      <xsd:documentation>Global type for ReferralActivityStatusCode.
+			</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ReferralReasonCode" type="ltsstypes:ReferralReasonCodeType">
+    <xsd:annotation>
+      <xsd:documentation>A reason to indicate deselection of referrals.
+			</xsd:documentation>
+      <xsd:documentation>Global type for ReferralReasonCode.
+			</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ReferralType">
+    <xsd:annotation>
+      <xsd:documentation>Data definitions for ReferralActivityType.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element ref="ltsscore:ReferralID" />
+          <xsd:element name="SourceOrganization" type="ltsscore:OrganizationType" />
+          <xsd:element name="DestinationOrganization" type="ltsscore:OrganizationType" />
+          <xsd:element minOccurs="0" ref="ltssee:ReferralGenerationCode" />
+          <xsd:element minOccurs="0" ref="ltssee:ReferralPriorityCode" />
+          <xsd:element minOccurs="0" ref="ltssee:ReferralStatusCode" />
+          <xsd:element minOccurs="0" ref="ltssee:ReferralReasonCode" />
+          <xsd:element minOccurs="0" name="ReferralReason" type="nc:TextType" />
+          <xsd:element name="ReferralCreatedDate" type="niemxsd:dateTime" />
+          <xsd:element name="ReferralCreatedBy" type="nc:PersonNameTextType" />
+          <xsd:element minOccurs="0" name="ReferralUpdatedDate" type="niemxsd:dateTime" />
+          <xsd:element minOccurs="0" name="ReferralUpdatedBy" type="nc:PersonNameTextType" />
+          <xsd:element minOccurs="0" name="ReferralBasisForOutcome" type="nc:TextType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="InternalComment" type="nc:TextType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ExternalComment" type="nc:TextType" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Referral" type="ltssee:ReferralType">
+    <xsd:annotation>
+      <xsd:documentation>A referral of an insurance applicant from one
+				information exchange system to another.</xsd:documentation>
+      <xsd:documentation>Global type for ReferralActivityType entity.
+			</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CareRecipientType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CareRecipientHasCognitiveImpairment" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>12. The person Homer cares for has:
+								Dementia (can't think clearly), Alzheimer’s disease, brain
+								injury, or other cognitive impairment.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="CareRecipientHasOtherDisabilities" type="niemxsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>12. The person Homer cares for has:
+								Another disability.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" ref="nc:PersonAgeMeasure" />
+          <xsd:element minOccurs="0" ref="ltsscore:PersonAssociation" />
+          <xsd:element minOccurs="0" name="CareRecipientLivesWithCaregiver" type="ltsstypes:ApplicantAnswerType">
+            <xsd:annotation>
+              <xsd:documentation>12. The person Homer cares for:
+								c. Do they live with Homer?  Yes  No  No answer
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" ref="nc:LocationStateUSPostalServiceCode" />
+          <xsd:element minOccurs="0" ref="nc:LocationCountyCode" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CareRecipient" type="ltssee:CareRecipientType" />
+  <xsd:element name="ApplicantHasTriCareInsurance" type="niemxsd:boolean" />
+  <xsd:complexType name="MedicaidInformationType">
+    <xsd:annotation>
+      <xsd:documentation>Data representation for MedicaidInformation
+				entity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element ref="ltsscore:PersonMedicaidID" />
+          <xsd:element ref="nc:DateTime" />
+          <xsd:element minOccurs="0" ref="nc:DateTime" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ApplicantScreeningObservations" type="nc:TextType">
+    <xsd:annotation>
+      <xsd:documentation>This data type captures case worker
+				observations during screening.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="RepresentativeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+				&lt;i:Base i:name="Object"
+				i:namespace="http://release.niem.gov/niem/structures/3.0/"&gt;&lt;/i:Base&gt;
+			</xsd:appinfo>
+      <xsd:documentation>A data type for an authorized representative who
+				is granted limited power of attorney for an insurance application.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="nc:PersonType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ReferringOrganization" type="nc:TextType" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="AuthorizedRepresentative" type="ltssee:RepresentativeType">
+    <xsd:annotation>
+      <xsd:documentation>An authorized representative who is granted
+				limited power of attorney for an insurance application.
+			</xsd:documentation>
+      <xsd:documentation>Global type for Authorized representative.
+			</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="HasNoFixedAddressIndicator" type="ltsstypes:NoFixedAddressType" />
+  <xsd:complexType name="ScreeningApplicantType">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates various
+				screening questions.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="nc:PersonType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="ltsscore:PersonLtssID" />
+          <xsd:element minOccurs="0" ref="ltssee:AuthorizedRepresentative" />
+          <xsd:element minOccurs="0" ref="ltssee:CareRecipient" />
+          <xsd:element minOccurs="0" ref="ltssee:ScreeningQuestionnaire" />
+          <xsd:element minOccurs="0" ref="ltssee:LivesOutsideStateTemporarilyIndicator" />
+          <xsd:element minOccurs="0" ref="ltssee:HasNoFixedAddressIndicator" />
+          <xsd:element minOccurs="0" name="MedicaidInformation" type="ltssee:MedicaidInformationType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="ltssee:CurrentEnrollment" />
+          <xsd:element minOccurs="0" ref="ltssee:CurrentInterestList" />
+          <xsd:element minOccurs="0" ref="ltssee:ApplicantHasTriCareInsurance" />
+          <xsd:element minOccurs="0" ref="ltssee:ApplicantScreeningObservations" />
+          <xsd:element minOccurs="0" name="TypeOfMedicalInsurance" type="nc:TextType" />
+          <xsd:element minOccurs="0" name="Comments" type="nc:TextType" />
+          <xsd:element minOccurs="0" ref="ltsscore:PersonAssociation" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="ltsscore:ContactInformation" />
+          <xsd:element minOccurs="0" ref="ltsscore:PersonMedicareID" />
+          <xsd:element minOccurs="0" ref="ltsscore:PersonPreferredLanguage" />
+          <xsd:element minOccurs="0" ref="ltsscore:USNaturalizedCitizenIndicator" />
+          <xsd:element minOccurs="0" ref="ltsscore:PersonMarriedIndicator" />
+          <xsd:element minOccurs="0" ref="ltsscore:PersonUSVeteranIndicator" />
+          <xsd:element minOccurs="0" ref="ltsscore:PersonTiersID" />
+          <xsd:element minOccurs="0" ref="ltsscore:PersonCsilID" />
+          <xsd:element minOccurs="0" ref="ltsscore:PersonCmbhsID" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ScreeningApplicant" type="ltssee:ScreeningApplicantType">
+    <xsd:annotation>
+      <xsd:documentation>Complex type encapsulating
+				ScreeningApplicantType.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ApplicationStatusCode" type="ltsstypes:ApplicationStatusCodeType" />
+  <xsd:element name="TermsOfUseTypeCode" type="ltsstypes:TOUType">
+    <xsd:annotation>
+      <xsd:documentation>Global type for Types of TermsOfUse LAR
+				options.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TermsOfUseType">
+    <xsd:annotation>
+      <xsd:documentation>&lt;p&gt;
+				Data definition for
+				TermsOfUseType.
+				&lt;/p&gt;</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element name="VersionIndicator" type="niemxsd:string" />
+          <xsd:element minOccurs="0" name="TermsOfUseSignedBy" type="nc:PersonNameTextType" />
+          <xsd:element minOccurs="0" name="TermsOfUseSignatureDate" type="niemxsd:date" />
+          <xsd:element minOccurs="0" name="TermsOfUseExpiryDate" type="niemxsd:date" />
+          <xsd:element ref="ltsscore:OrganizationID" />
+          <xsd:element minOccurs="0" ref="ltssee:TermsOfUseTypeCode" />
+          <xsd:element minOccurs="0" name="ExternalID" type="nc:IdentificationType" />
+          <xsd:element minOccurs="0" name="TermsOfUseStaffName" type="nc:PersonNameTextType" />
+          <xsd:element minOccurs="0" maxOccurs="2" name="TermsOfUseWitnessName" type="nc:PersonNameTextType" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ScreeningApplicationType">
+    <xsd:annotation>
+      <xsd:documentation>
+				Complex type encapsulating ScreeningApplicant
+				global type.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="ltsscore:ScreeningID" />
+          <xsd:element minOccurs="0" ref="ltssee:ApplicationStatusCode" />
+          <xsd:element minOccurs="0" name="TermsOfUse" type="ltssee:TermsOfUseType" />
+          <xsd:element name="CreatedBy" type="nc:PersonNameTextType" />
+          <xsd:element name="CreateDateTime" type="niemxsd:dateTime" />
+          <xsd:element minOccurs="0" name="UpdatedBy" type="nc:PersonNameTextType" />
+          <xsd:element minOccurs="0" name="UpdateDateTime" type="niemxsd:dateTime" />
+          <xsd:element minOccurs="0" name="DataEnteredBy" type="nc:PersonNameTextType" />
+          <xsd:element minOccurs="0" name="EnteredDateTime" type="niemxsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ReferralsIdentified" type="ltssee:ReferralType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ReferralsSent" type="ltssee:ReferralType" />
+          <xsd:element minOccurs="0" name="Comments" type="nc:TextType" />
+          <xsd:element minOccurs="0" ref="ltssee:ScreeningApplicant" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ScreeningApplication" type="ltssee:ScreeningApplicationType">
+    <xsd:annotation>
+      <xsd:documentation>Complex type encapsulating
+				ScreeningApplicationType.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ScreeningSubmissionCode" type="ltsstypes:ScreeningSubmissionType" />
+</xsd:schema>

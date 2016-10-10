@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://ltss.referralmanagement.hhsc.state.tx.us/interface/1.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LTSSReferralManagementService" targetNamespace="http://ltss.referralmanagement.hhsc.state.tx.us/interface/1.1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns:ltssrmexch="http://ltss.referralmanagement.hhsc.state.tx.us/exchange/1.1" targetNamespace="http://ltss.referralmanagement.hhsc.state.tx.us/interface/1.1">
+      <xsd:import schemaLocation="LTSSReferralManagementExchangeModel.xsd" namespace="http://ltss.referralmanagement.hhsc.state.tx.us/exchange/1.1" />
+      <xsd:element name="retrieveReferralInfoRequest" type="ltssrmexch:RetrieveReferralInfoInputMessage" />
+      <xsd:element name="retrieveReferralInfoResponse" type="ltssrmexch:RetrieveReferralInfoOutputMessage" />
+      <xsd:element name="generateReferralsRequest" type="ltssrmexch:GenerateReferralsInputMessage" />
+      <xsd:element name="generateReferralsResponse" type="ltssrmexch:GenerateReferralsOutputMessage" />
+      <xsd:element name="updateReferralInfoRequest" type="ltssrmexch:UpdateReferralInfoInputMessage" />
+      <xsd:element name="updateReferralInfoResponse" type="ltssrmexch:UpdateReferralInfoOutputMessage" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="retrieveReferralInfoRequest">
+    <wsdl:part name="retrieveReferralInfoRequest" element="tns:retrieveReferralInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="retrieveReferralInfoResponse">
+    <wsdl:part name="retrieveReferralInfoResponse" element="tns:retrieveReferralInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="generateReferralsRequest">
+    <wsdl:part name="generateReferralsRequest" element="tns:generateReferralsRequest" />
+  </wsdl:message>
+  <wsdl:message name="generateReferralsResponse">
+    <wsdl:part name="generateReferralsResponse" element="tns:generateReferralsResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateReferralInfoRequest">
+    <wsdl:part name="updateReferralInfoRequest" element="tns:updateReferralInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="updateReferralInfoResponse">
+    <wsdl:part name="updateReferralInfoResponse" element="tns:updateReferralInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LTSSReferralManagementServicePortType">
+    <wsdl:documentation>Service interface defined to manage referral activity resulting out of screening. </wsdl:documentation>
+    <wsdl:operation name="retrieveReferralInfo">
+      <wsdl:documentation>This operation retrieves the details of a particular referral activity when the request contains a specific referral id.</wsdl:documentation>
+      <wsdl:input name="retrieveReferralInfoRequest" message="tns:retrieveReferralInfoRequest" />
+      <wsdl:output name="retrieveReferralInfoResponse" message="tns:retrieveReferralInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="generateReferrals">
+      <wsdl:documentation>This operation generates referrals for types whose ReferralGenerationCode is'Generate' or 'Send'. 'Send' should also invoke the sendReferral operation of ReferralDispatcherService of participating door locations.</wsdl:documentation>
+      <wsdl:input name="generateReferralsRequest" message="tns:generateReferralsRequest" />
+      <wsdl:output name="generateReferralsResponse" message="tns:generateReferralsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateReferralInfo">
+      <wsdl:documentation>This operation allows the update of referral status.</wsdl:documentation>
+      <wsdl:input name="updateReferralInfoRequest" message="tns:updateReferralInfoRequest" />
+      <wsdl:output name="updateReferralInfoResponse" message="tns:updateReferralInfoResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LTSSReferralManagementServiceBinding" type="tns:LTSSReferralManagementServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retrieveReferralInfo">
+      <soap12:operation soapAction="http://ltss.referralmanagement.hhsc.state.tx.us/interface/1.1/retrieveReferralInfo/" />
+      <wsdl:input name="retrieveReferralInfoRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="retrieveReferralInfoResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateReferrals">
+      <soap12:operation soapAction="http://ltss.referralmanagement.hhsc.state.tx.us/interface/1.1/generateReferrals/" />
+      <wsdl:input name="generateReferralsRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="generateReferralsResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateReferralInfo">
+      <soap12:operation soapAction="http://ltss.referralmanagement.hhsc.state.tx.us/interface/1.1/updateReferralInfo/" />
+      <wsdl:input name="updateReferralInfoRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateReferralInfoResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LTSSReferralManagementService">
+    <wsdl:port name="LTSSReferralManagementServicePort" binding="tns:LTSSReferralManagementServiceBinding">
+      <soap12:address location="http://localhost:9080/LTSS-NIEM-3.0-EARWeb/LTSSReferralManagementService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:ltsstypes="http://ltss.types.hhsc.state.tx.us/ltsstypes/1.1" xmlns:s="http://release.niem.gov/niem/structures/3.0/" targetNamespace="http://ltss.types.hhsc.state.tx.us/ltsstypes/1.1" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="niem/structures/3.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/3.0/" />
+  <xsd:simpleType name="TransferActivityCodeSimpleType">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="RC">
+        <xsd:annotation>
+          <xsd:documentation>RESOLVECLIENT - Activity to resolve
+						client identity.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="CR">
+        <xsd:annotation>
+          <xsd:documentation>RETRIEVECLIENT - Activity to
+						retrieve
+						client in the system.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="MC">
+        <xsd:annotation>
+          <xsd:documentation>MATCHCLIENT - Activity to match
+						client in the system.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="UC">
+        <xsd:annotation>
+          <xsd:documentation>UPDATECLIENT - Activity to update
+						client identifier.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="RS">
+        <xsd:annotation>
+          <xsd:documentation>RETRIEVESCREEN - Activity to
+						retrieve screening details.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SS">
+        <xsd:annotation>
+          <xsd:documentation>SUBMITSCREEN - Activity submit
+						screening details.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="GR">
+        <xsd:annotation>
+          <xsd:documentation>GENERATEREFERRAL - Activity to
+						generate identified/manually
+						added referrals.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="RR">
+        <xsd:annotation>
+          <xsd:documentation>RETRIEVEREFERRAL - Activity to
+						retrieve generated
+						referrals.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="UR">
+        <xsd:annotation>
+          <xsd:documentation>UPDATEREFERRAL - Activity to
+						update the status of
+						generated referrals..</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SR">
+        <xsd:annotation>
+          <xsd:documentation>SENDREFERRAL - Activity to send
+						referrals to identified
+						recipient organization.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="RI">
+        <xsd:annotation>
+          <xsd:documentation>RETRIEVEINTERESTLIST -
+						Activity to retrieve interest list.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="RM">
+        <xsd:annotation>
+          <xsd:documentation>RETRIEVECMADETAILS - Activity
+						to retrieve CMA details.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="TransferActivityCodeType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:TransferActivityCodeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="OrganizationCodeSimpleType">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="AD">
+        <xsd:annotation>
+          <xsd:documentation>DADS - ADRC(Aging and Disability Resource
+						Centers)
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="AA">
+        <xsd:annotation>
+          <xsd:documentation>DADS - AAA(Area Agency on Aging)
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="LA">
+        <xsd:annotation>
+          <xsd:documentation>LA(Local Authorities)
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="RO">
+        <xsd:annotation>
+          <xsd:documentation>DADS - RO(Regional Office)
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SO">
+        <xsd:annotation>
+          <xsd:documentation>DADS - SO(Access and Intake Interest List)
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PA">
+        <xsd:annotation>
+          <xsd:documentation>
+						DADS - Program of All-Inclusive Care for the
+						Elderly
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="CM">
+        <xsd:annotation>
+          <xsd:documentation>DADS - Case Management Agency
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="MH">
+        <xsd:annotation>
+          <xsd:documentation>DSHS - LMHA(Local Mental Health Authorities)
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OS">
+        <xsd:annotation>
+          <xsd:documentation>DSHS - OSAR(Outreach, Screening, Assessment,
+						and Referral Providers)
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="MC">
+        <xsd:annotation>
+          <xsd:documentation>MCO (Medicaid Managed Care Organizations)
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PS">
+        <xsd:annotation>
+          <xsd:documentation>PSU (Program Support Unit)
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="HC">
+        <xsd:annotation>
+          <xsd:documentation>211- A HHSC program to help Texas citizens
+						connect with the services they need.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="OrganizationCodeType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:OrganizationCodeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="ReferralPriorityCodeSimpleType">
+    <xsd:annotation>
+      <xsd:documentation>Enumeration of options for Referral
+				priority.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="E">
+        <xsd:annotation>
+          <xsd:documentation>EXPEDITED - Code to indicate expedited
+						referral.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="R">
+        <xsd:annotation>
+          <xsd:documentation>REGULAR - Code to indicate regular
+						referral.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ReferralPriorityCodeType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:ReferralPriorityCodeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="LikelyhoodOfMoveToNursingFacilitySimpleType">
+    <xsd:annotation>
+      <xsd:documentation>Enumeration of options for Likelihood
+				of move to nursing facility.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="VL">
+        <xsd:annotation>
+          <xsd:documentation>VERY LIKELY - very likely.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="LL">
+        <xsd:annotation>
+          <xsd:documentation>LIKELY - likelihood.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SL">
+        <xsd:annotation>
+          <xsd:documentation>SOMEWHAT LIKELY - possible.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NL">
+        <xsd:annotation>
+          <xsd:documentation>NOT LIKELY - remote possibility.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NM">
+        <xsd:annotation>
+          <xsd:documentation>NOT AN OPTION - not moving.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NA">
+        <xsd:annotation>
+          <xsd:documentation>NO ANSWER - not answered.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="LikelyhoodOfMoveToNursingFacilityType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:LikelyhoodOfMoveToNursingFacilitySimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="AlcoholUsagePatternSimpleType">
+    <xsd:annotation>
+      <xsd:documentation>Enumeration of AlcoholUsagePattern.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="N">
+        <xsd:annotation>
+          <xsd:documentation>None.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="O">
+        <xsd:annotation>
+          <xsd:documentation>One.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="T">
+        <xsd:annotation>
+          <xsd:documentation>Two.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="H">
+        <xsd:annotation>
+          <xsd:documentation>Three.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="F">
+        <xsd:annotation>
+          <xsd:documentation>Four.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="V">
+        <xsd:annotation>
+          <xsd:documentation>Five or more.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="AlcoholUsagePatternType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:AlcoholUsagePatternSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="ApplicantAnswerSimpleType">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="Y">
+        <xsd:annotation>
+          <xsd:documentation>YES - Answered yes.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="N">
+        <xsd:annotation>
+          <xsd:documentation>NO - Answered no.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="O">
+        <xsd:annotation>
+          <xsd:documentation>NO ANSWER - Question not answered.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ApplicantAnswerType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:ApplicantAnswerSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="LivesOutsideStateTemporarilySimpleType">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="Y">
+        <xsd:annotation>
+          <xsd:documentation>Yes - Answered yes.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="N">
+        <xsd:annotation>
+          <xsd:documentation>No - Answered no.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="LivesOutsideStateTemporarilyType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:LivesOutsideStateTemporarilySimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="ReferralGenerationCodeSimpleType">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="S">
+        <xsd:annotation>
+          <xsd:documentation>System Identified- referrals identified by
+						the system based on user data.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="P">
+        <xsd:annotation>
+          <xsd:documentation>Potential referrals.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="M">
+        <xsd:annotation>
+          <xsd:documentation>Added - Manually added to Generate
+						referrals.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="F">
+        <xsd:annotation>
+          <xsd:documentation>Forwarded - forwarded by working on
+						another referral.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ReferralGenerationCodeType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:ReferralGenerationCodeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="ReferralStatusCodeSimpleType">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="ID">
+        <xsd:annotation>
+          <xsd:documentation>Identified - Status of a referral when
+						the referral is initially identified and the screening is in
+						status ‘Identified’
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="GE">
+        <xsd:annotation>
+          <xsd:documentation>Generated - Status of a referral when
+						the
+						referral is generated.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NS">
+        <xsd:annotation>
+          <xsd:documentation>Not Sent - Status of a referral when the
+						referral is identified but not sent and the screening is in status
+						‘Completed and Not Sent’
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="AS">
+        <xsd:annotation>
+          <xsd:documentation>Assigned - status of a referral when
+						assigned to work on.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="UA">
+        <xsd:annotation>
+          <xsd:documentation>Unassigned - status of a referral when
+						not assigned to work on.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="DS">
+        <xsd:annotation>
+          <xsd:documentation>Not Send - Deselect
+						Note: Referrals were
+						identified and the user deselected some referral
+						but sent others.
+						The screening status is ‘Complete- referrals
+						sent’
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SF">
+        <xsd:annotation>
+          <xsd:documentation>Send Failure - Status of a referral when the
+						referral was identified and generated but not sent, and the
+						screening is in status ‘Completed – Send Failure’
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PF">
+        <xsd:annotation>
+          <xsd:documentation>Process Failure - Status of a referral
+						when the
+						referral was sent, and the receiving Door failed to
+						process.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="AC">
+        <xsd:annotation>
+          <xsd:documentation>Acknowledged/Completed -
+						Status of a referral when referral is marked as
+						‘Acknowledged/Completed’ by
+						a. A worker with referral management
+						role
+						b. An external application retrieving referrals through a web
+						service (MCO/PSU, DSHS LMHA)
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ReferralStatusCodeType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:ReferralStatusCodeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="ReferralReasonCodeSimpleType">
+    <xsd:annotation>
+      <xsd:documentation>Enumeration of ReferralGeneration
+				options.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="WO">
+        <xsd:annotation>
+          <xsd:documentation>Individual is already working with the
+						Organization</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="RS">
+        <xsd:annotation>
+          <xsd:documentation>Individual is already receiving
+						services from this Organization</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NR">
+        <xsd:annotation>
+          <xsd:documentation>Individual does not want to be
+						referred to this Organization </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OT">
+        <xsd:annotation>
+          <xsd:documentation>Other</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ReferralReasonCodeType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:ReferralReasonCodeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="FamilyRelationshipHIPAACodeSimpleType">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="HW">
+        <xsd:annotation>
+          <xsd:documentation>Spouse</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PA">
+        <xsd:annotation>
+          <xsd:documentation>Parent (father or mother)
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="GP">
+        <xsd:annotation>
+          <xsd:documentation>Grandparent (grandfather or
+						grandmother)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="GC">
+        <xsd:annotation>
+          <xsd:documentation>Grandchild (grandson or granddaughter)
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="BS">
+        <xsd:annotation>
+          <xsd:documentation>Sibling (brother or sister)
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SE">
+        <xsd:annotation>
+          <xsd:documentation>Self</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="CH">
+        <xsd:annotation>
+          <xsd:documentation>Child (son or daughter)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="GU">
+        <xsd:annotation>
+          <xsd:documentation>Guardian</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="US">
+        <xsd:annotation>
+          <xsd:documentation>Unspecified relationship
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OR">
+        <xsd:annotation>
+          <xsd:documentation>Related in some other way to
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="IL">
+        <xsd:annotation>
+          <xsd:documentation>In-law
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SW">
+        <xsd:annotation>
+          <xsd:documentation>Social worker for
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="UR">
+        <xsd:annotation>
+          <xsd:documentation>Not related to
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="FamilyRelationshipHIPAACodeType">
+    <xsd:annotation>
+      <xsd:documentation>Modification - updated the enumeration to reflect the values
+			in LTSS application.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:FamilyRelationshipHIPAACodeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="CaretakerDependentCodeSimpleType">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="YC">
+        <xsd:annotation>
+          <xsd:documentation>YesCovered - Yes, the person is a
+						dependent deprived of
+						parental support whose care is provided by a
+						caretaker — the
+						dependent has health coverage</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="YN">
+        <xsd:annotation>
+          <xsd:documentation>YesNotCovered - Yes, the person is
+						a dependent deprived of
+						parental support whose care is provided by
+						a caretaker — the
+						dependent lacks health coverage
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NO">
+        <xsd:annotation>
+          <xsd:documentation>No - No, the person is not a dependent
+						deprived of
+						parental support whose care is provided by a caretaker
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="CaretakerDependentCodeType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:CaretakerDependentCodeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="NoFixedAddressSimpleType">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="Y">
+        <xsd:annotation>
+          <xsd:documentation>Yes - Has no fixed address.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="N">
+        <xsd:annotation>
+          <xsd:documentation>No - Has a fixed address.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="NoFixedAddressType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:NoFixedAddressSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="ContactInformationCategoryCodeSimpleType">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="HO">
+        <xsd:annotation>
+          <xsd:documentation>Home</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="WK">
+        <xsd:annotation>
+          <xsd:documentation>Work</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="EM">
+        <xsd:annotation>
+          <xsd:documentation>Employer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="FR">
+        <xsd:annotation>
+          <xsd:documentation>Friend</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="MA">
+        <xsd:annotation>
+          <xsd:documentation>Mailing</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="DO">
+        <xsd:annotation>
+          <xsd:documentation>DesignatedOrganization - A
+						set of ways to contact a person indirectly
+						via an organization,
+						such as an employer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="DP">
+        <xsd:annotation>
+          <xsd:documentation>DesignatedPerson - A set of ways
+						to contact a person indirectly
+						via a person, such as a friend
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SF">
+        <xsd:annotation>
+          <xsd:documentation>Self - A set of ways to contact a person
+						directly
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="MO">
+        <xsd:annotation>
+          <xsd:documentation>Mobile phone</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ContactInformationCategoryCodeType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:ContactInformationCategoryCodeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="ApplicationStatusCodeSimpleType">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="IC">
+        <xsd:annotation>
+          <xsd:documentation>Incomplete -
+						Status ‘Incomplete’
+						identifies a screening which was started and for
+						which:
+						a. One or
+						more user responses were saved
+						b. Referral rules were not run
+						Or:
+						c.
+						All required user responses were saved
+						d. Referral rules were run
+						but the user navigated back to the pages
+						with user responses, made
+						updates to user responses, but did not
+						rerun the rules
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="ID">
+        <xsd:annotation>
+          <xsd:documentation>Identified -
+						Status ‘Identified’
+						represents a screening for which:
+						a. All required user responses
+						were saved
+						b. The LTSS Referral Rules Decision Tables successfully
+						executed and
+						referrals were identified
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="RN">
+        <xsd:annotation>
+          <xsd:documentation>Completed – Referrals Not Sent
+						Status
+						‘Completed – Referrals Not Sent’ represents a screening for
+						which:
+						a. All of the conditions for status ‘Identified’ are true
+						b. The
+						user selected an action to ‘Complete’ the screening without
+						Generating (Sending) referrals
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="RS">
+        <xsd:annotation>
+          <xsd:documentation>Completed – Referrals Sent
+						Status
+						‘Completed – Referrals Sent’ represents a screening for which:
+						a.
+						All of the conditions for status ‘Identified’ are true
+						b. The user
+						selected an action to ‘Generate’ (Send) referrals
+						c. The system
+						detected that referrals were successfully sent to each
+						of the
+						identified Door-locations
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="RF">
+        <xsd:annotation>
+          <xsd:documentation>Completed – Send Failure
+						Status
+						‘Completed – Send Failure’ represents a screening for which:
+						a. All
+						of the conditions for status ‘Identified’ are true
+						b. The user
+						selected an action to ‘Generate’ referrals
+						c. The system detected
+						that one or more referrals were not sent
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="CU">
+        <xsd:annotation>
+          <xsd:documentation>Cancelled by User -
+						Status ‘Cancelled by
+						User’ represents a screening for which:
+						a. All of the conditions
+						for status ‘Incomplete’ or ‘Identified’ are
+						true
+						b. The user
+						selected an action to ‘Cancel’ the screening
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="CS">
+        <xsd:annotation>
+          <xsd:documentation>Cancelled by System -
+						Status ‘Cancelled
+						by System’ represents a screening for which:
+						a. The system
+						cancelled the screening after the established
+						retention period
+						i. 60
+						days for screenings with status ‘Incomplete’ or ‘Identified’
+						ii. 7
+						years for screenings with status ‘Completed …’
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ApplicationStatusCodeType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:ApplicationStatusCodeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="TOUTypeSimpleType">
+    <xsd:annotation>
+      <xsd:documentation>Enumeration of options for terms of use
+				types.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="SE">
+        <xsd:annotation>
+          <xsd:documentation>SELF - as Legal authorized reprsentative.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="LA">
+        <xsd:annotation>
+          <xsd:documentation>LAR - any Legal authorized reprsentative.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NA">
+        <xsd:annotation>
+          <xsd:documentation>NON-LAR - Code to indicate no LAR.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="TOUType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:TOUTypeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="ScreeningSubmissionSimpleType">
+    <xsd:annotation>
+      <xsd:documentation>Enumeration of screening submission
+				types.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="SS">
+        <xsd:annotation>
+          <xsd:documentation>SAVEANDSUPPPRESS - Code to save
+						screening and suppress referral
+						generation.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SU">
+        <xsd:annotation>
+          <xsd:documentation>SAVEANDSUBMIT - Code to save
+						screening and submit referrals
+						for send.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ScreeningSubmissionType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:ScreeningSubmissionSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="LanguageCodeSimpleType">
+    <xsd:annotation>
+      <xsd:documentation>Enumeration of language codes.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="CH">
+        <xsd:annotation>
+          <xsd:documentation>CHINESE - Code to indicate Chinese as
+						primary language.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="EN">
+        <xsd:annotation>
+          <xsd:documentation>ENGLISH - Code to indicate English as
+						primary language.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="MC">
+        <xsd:annotation>
+          <xsd:documentation>MANDARIN CHINESE - Code to indicate Mandarin Chinese as
+						primary language.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="ES">
+        <xsd:annotation>
+          <xsd:documentation>SPANISH - Code to indicate Spanish as
+						primary language
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="VI">
+        <xsd:annotation>
+          <xsd:documentation>VIETNAMESE - Code to indicate Vietnamese as
+						primary language.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OT">
+        <xsd:annotation>
+          <xsd:documentation>OTHER - Code to indicate neither English
+						nor Spanish as primary language
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="LanguageCodeType">
+    <xsd:simpleContent>
+      <xsd:extension base="ltsstypes:LanguageCodeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

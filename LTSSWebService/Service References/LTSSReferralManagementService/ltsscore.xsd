@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:ltsscore="http://ltss.core.hhsc.state.tx.us/ltsscore/1.1" xmlns:niemxsd="http://release.niem.gov/niem/proxy/xsd/3.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/3.0/" xmlns:s="http://release.niem.gov/niem/structures/3.0/" xmlns:ltsstypes="http://ltss.types.hhsc.state.tx.us/ltsstypes/1.1" targetNamespace="http://ltss.core.hhsc.state.tx.us/ltsscore/1.1" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="niem/structures/3.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/3.0/" />
+  <xsd:import schemaLocation="niem/proxy/xsd/3.0/xs.xsd" namespace="http://release.niem.gov/niem/proxy/xsd/3.0/" />
+  <xsd:import schemaLocation="niem/niem-core/3.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/3.0/" />
+  <xsd:import schemaLocation="ltsstypes.xsd" namespace="http://ltss.types.hhsc.state.tx.us/ltsstypes/1.1" />
+  <xsd:element name="TransferActivityCode" type="ltsstypes:TransferActivityCodeType">
+    <xsd:annotation>
+      <xsd:documentation>Code which identifies Exchange or MedicaidCHIP</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TransferActivityType">
+    <xsd:annotation>
+      <xsd:appinfo>
+            &lt;i:Base i:name="ActivityType" i:namespace="http://release.niem.gov/niem/niem-core/3.0/"&gt;&lt;/i:Base&gt;
+         </xsd:appinfo>
+      <xsd:documentation>A data type for An entity that started the referral activity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="nc:ActivityType">
+        <xsd:sequence>
+          <xsd:element ref="ltsscore:TransferActivityCode" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TransferActivity" type="ltsscore:TransferActivityType">
+    <xsd:annotation>
+      <xsd:documentation>Global type defining Transfer activity.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="OrganizationID" type="nc:IdentificationType">
+    <xsd:annotation>
+      <xsd:documentation>Global object for organizationID entity.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="InformationExchangeSystemType">
+    <xsd:annotation>
+      <xsd:appinfo>
+            &lt;i:Base i:name="Object" i:namespace="http://release.niem.gov/niem/structures/3.0/"&gt;&lt;/i:Base&gt;
+         </xsd:appinfo>
+      <xsd:documentation>A data type for a system that participates in the exchange of electronic information (such as a Medicaid system, the Federally Facilitated Exchange, an issuer system, a Social Security Administration system, etc.).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element ref="nc:OrganizationIdentification" />
+          <xsd:element ref="nc:OrganizationName" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Receiver" type="ltsscore:InformationExchangeSystemType">
+    <xsd:annotation>
+      <xsd:documentation>An information exchange system receiving information.</xsd:documentation>
+      <xsd:documentation>Global type for Receiver organization type.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Sender" type="ltsscore:InformationExchangeSystemType">
+    <xsd:annotation>
+      <xsd:documentation>An information exchange system sending information.</xsd:documentation>
+      <xsd:documentation>Global type for Sender organization entity.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TransferHeaderType">
+    <xsd:annotation>
+      <xsd:appinfo>
+            &lt;i:Base i:name="Object" i:namespace="http://release.niem.gov/niem/structures/3.0/"&gt;&lt;/i:Base&gt;
+         </xsd:appinfo>
+      <xsd:documentation>A data type for An entity that started the referral process.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element ref="ltsscore:TransferActivity" />
+          <xsd:element ref="ltsscore:Sender" />
+          <xsd:element ref="ltsscore:Receiver" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TransferHeader" type="ltsscore:TransferHeaderType">
+    <xsd:annotation>
+      <xsd:documentation>A entity that starts the referral process.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonMedicaidID" type="nc:IdentificationType">
+    <xsd:annotation>
+      <xsd:documentation>Global type for Person's Medicaid identifier.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ResponseCode" type="nc:TextType">
+    <xsd:annotation>
+      <xsd:appinfo>
+            &lt;i:Base i:name="Response" i:namespace="http://ltss.core.hhsc.state.tx.us/ltsscore/1.1"&gt;&lt;/i:Base&gt;
+         </xsd:appinfo>
+      <xsd:documentation>A coded response.</xsd:documentation>
+      <xsd:documentation>Global type for Response code.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ResponseDescriptionText" type="nc:TextType">
+    <xsd:annotation>
+      <xsd:appinfo>
+            &lt;i:Base i:name="Response" i:namespace="http://ltss.core.hhsc.state.tx.us/ltsscore/1.1"&gt;&lt;/i:Base&gt;
+         </xsd:appinfo>
+      <xsd:documentation>A description of a response.</xsd:documentation>
+      <xsd:documentation>Global type for response description.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Error" type="ltsscore:ErrorType">
+    <xsd:annotation>
+      <xsd:appinfo>
+            &lt;i:Base i:name="Response" i:namespace="http://ltss.core.hhsc.state.tx.us/ltsscore/1.1"&gt;&lt;/i:Base&gt;
+         </xsd:appinfo>
+      <xsd:documentation>A description of a response from Service provider, populated during error conditions.</xsd:documentation>
+      <xsd:documentation>Global type for error messages.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ResponseMetadataType">
+    <xsd:annotation>
+      <xsd:appinfo>
+            &lt;i:Base i:name="MetadataType" i:namespace="http://release.niem.gov/niem/structures/3.0/"&gt;&lt;/i:Base&gt;
+            &lt;i:AppliesTo i:name="Object" i:namespace="http://release.niem.gov/niem/structures/3.0/"&gt;&lt;/i:AppliesTo&gt;
+            &lt;i:AppliesTo i:name="Association" i:namespace="http://release.niem.gov/niem/structures/3.0/"&gt;&lt;/i:AppliesTo&gt;
+         </xsd:appinfo>
+      <xsd:documentation>A data type for metadata about a response.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:MetadataType">
+        <xsd:sequence>
+          <xsd:element ref="ltsscore:ResponseCode" />
+          <xsd:element ref="ltsscore:ResponseDescriptionText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="ltsscore:Error" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorType">
+    <xsd:sequence>
+      <xsd:element name="code" type="nc:TextType" />
+      <xsd:element name="description" type="nc:TextType" />
+      <xsd:element name="detail" nillable="true" type="nc:TextType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ResponseMetadata" type="ltsscore:ResponseMetadataType">
+    <xsd:annotation>
+      <xsd:documentation>Generic response type for LTSS services.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonIdentification" type="nc:IdentificationType">
+    <xsd:annotation>
+      <xsd:documentation>An identification assigned to an individual.</xsd:documentation>
+      <xsd:documentation>Global type for Identifier for Person.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonCsilID" type="nc:IdentificationType">
+    <xsd:annotation>
+      <xsd:documentation>Global type for Person's CSILidentifier.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="StatusIndicator" type="niemxsd:boolean">
+    <xsd:annotation>
+      <xsd:documentation>True if the status holds; false otherwise.</xsd:documentation>
+      <xsd:documentation>Global type for Status indicator.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ScreeningID" type="nc:IdentificationType">
+    <xsd:annotation>
+      <xsd:documentation>Global type for ScreeningApplicationID.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ReferralID" type="nc:IdentificationType">
+    <xsd:annotation>
+      <xsd:documentation>Global type for referral activity.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonLtssID" type="nc:IdentificationType">
+    <xsd:annotation>
+      <xsd:documentation>Global type for Person's LTSS identifier.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonUSVeteranIndicator" type="niemxsd:boolean">
+    <xsd:annotation>
+      <xsd:documentation>True if a person is a U.S. veteran; false otherwise.</xsd:documentation>
+      <xsd:documentation>Global type for Person's military service indicator.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="OrganizationType">
+    <xsd:annotation>
+      <xsd:appinfo>true&lt;AugmentedTypeIndicator xmlns="http://release.niem.gov/niem/appinfo/3.0/"&gt;true&lt;/AugmentedTypeIndicator&gt;
+            &lt;i:Base i:name="OrganizationType" i:namespace="http://release.niem.gov/niem/niem-core/3.0/"&gt;&lt;/i:Base&gt;
+         </xsd:appinfo>
+      <xsd:documentation>A data type for an applied augmentation for type nc:OrganizationType.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="nc:OrganizationType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="OrganizationCode" type="ltsstypes:OrganizationCodeType" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="FamilyRelationshipCode" type="ltsstypes:FamilyRelationshipHIPAACodeType">
+    <xsd:annotation>
+      <xsd:documentation>Global object for Family relationship code entity.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonCaretakerDependentCode" type="ltsstypes:CaretakerDependentCodeType">
+    <xsd:annotation>
+      <xsd:documentation>An indication of whether a person is a dependent deprived of parental support whose care is provided by a caretaker under Medicaid rules, including the dependent's health coverage status.</xsd:documentation>
+      <xsd:documentation>Global type for PersonCaretakerDependentCode.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="PersonAssociationType">
+    <xsd:annotation>
+      <xsd:appinfo>
+            &lt;i:Base i:name="PersonAssociationType" i:namespace="http://release.niem.gov/niem/niem-core/3.0/"&gt;&lt;/i:Base&gt;
+         </xsd:appinfo>
+      <xsd:documentation>A data type for a relationship between two people.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="nc:PersonAssociationType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="ltsscore:FamilyRelationshipCode" />
+          <xsd:element minOccurs="0" ref="ltsscore:PersonCaretakerDependentCode" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PersonAssociation" type="ltsscore:PersonAssociationType">
+    <xsd:annotation>
+      <xsd:documentation>A relationship between two people.</xsd:documentation>
+      <xsd:documentation>A global type for a relationship between two people.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonTiersID" type="nc:IdentificationType">
+    <xsd:annotation>
+      <xsd:documentation>Global type for person's TIERS identifier.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonMedicareID" type="nc:IdentificationType">
+    <xsd:annotation>
+      <xsd:documentation>Global type for Person's medicare identifier.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonCmbhsID" type="nc:IdentificationType">
+    <xsd:annotation>
+      <xsd:documentation>Global type for CMBHS id for the person.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonMarriedIndicator" nillable="true" type="niemxsd:boolean">
+    <xsd:annotation>
+      <xsd:documentation>True if a person is married; false otherwise.</xsd:documentation>
+      <xsd:documentation>Global type for PersonMarriedIndicator.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ContactInformationCategoryCode" nillable="true" type="ltsstypes:ContactInformationCategoryCodeType">
+    <xsd:annotation>
+      <xsd:documentation>A kind of contact information.</xsd:documentation>
+      <xsd:documentation>Global object for Contact information Category type entity.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ContactInformationType">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="nc:ContactInformationType">
+        <xsd:sequence>
+          <xsd:element ref="ltsscore:ContactInformationCategoryCode" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContactInformation" type="ltsscore:ContactInformationType">
+    <xsd:annotation>
+      <xsd:documentation>Details about how to contact a person or an organization.</xsd:documentation>
+      <xsd:documentation>Global object for Contact information entity.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonPreferredLanguage" type="ltsstypes:LanguageCodeType">
+    <xsd:annotation>
+      <xsd:documentation>A capacity of a person for a language with which that person has the strongest preference.</xsd:documentation>
+      <xsd:documentation>Global type for person's language preference.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="USNaturalizedCitizenIndicator" type="niemxsd:boolean">
+    <xsd:annotation>
+      <xsd:documentation>True if a person is a naturalized citizen of the US; false otherwise.</xsd:documentation>
+      <xsd:documentation>Global type for US citizen type.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+</xsd:schema>

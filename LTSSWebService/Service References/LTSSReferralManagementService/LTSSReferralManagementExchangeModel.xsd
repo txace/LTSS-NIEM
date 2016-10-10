@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:ltssrmexch="http://ltss.referralmanagement.hhsc.state.tx.us/exchange/1.1" xmlns:ltssrmext="http://ltss.referralmanagement.hhsc.state.tx.us/extension/1.1" targetNamespace="http://ltss.referralmanagement.hhsc.state.tx.us/exchange/1.1" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="LTSSReferralManagementExtensionModel.xsd" namespace="http://ltss.referralmanagement.hhsc.state.tx.us/extension/1.1" />
+  <xsd:element name="RetrieveReferralInfoRequest" type="ltssrmext:RetrieveReferralInfoRequestPayloadType">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates
+				RetrieveReferralInfoRequestPayloadType.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="RetrieveReferralInfoInputMessage">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates
+				RetrieveReferralInfoRequest.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="ltssrmexch:RetrieveReferralInfoRequest" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="RetrieveReferralInfoResponse" type="ltssrmext:RetrieveReferralInfoResponsePayloadType">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates
+				RetrieveReferralInfoResponsePayloadType.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="RetrieveReferralInfoOutputMessage">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates
+				RetrieveReferralInfoResponse.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="ltssrmexch:RetrieveReferralInfoResponse" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="GenerateReferralsRequest" type="ltssrmext:GenerateReferralRequestPayloadType" />
+  <xsd:complexType name="GenerateReferralsInputMessage">
+    <xsd:sequence>
+      <xsd:element ref="ltssrmexch:GenerateReferralsRequest" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="GenerateReferralsResponse" type="ltssrmext:GenerateReferralResponsePayloadType" />
+  <xsd:complexType name="GenerateReferralsOutputMessage">
+    <xsd:sequence>
+      <xsd:element ref="ltssrmexch:GenerateReferralsResponse" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="UpdateReferralInfoRequest" type="ltssrmext:UpdateReferralInfoRequestPayloadType">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates
+				UpdateReferralInfoRequestPayloadType.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="UpdateReferralInfoInputMessage">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates
+				UpdateReferralInfoRequest.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="ltssrmexch:UpdateReferralInfoRequest" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="UpdateReferralInfoResponse" type="ltssrmext:UpdateReferralInfoResponsePayloadType">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates
+				UpdateReferralInfoResponsePayloadType.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="UpdateReferralInfoOutputMessage">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates
+				UpdateReferralInfoResponse.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="ltssrmexch:UpdateReferralInfoResponse" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:ltssee="http://ltss.ee.hhsc.state.tx.us/ltssee/1.1" xmlns:ltssrmext="http://ltss.referralmanagement.hhsc.state.tx.us/extension/1.1" xmlns:ltsscore="http://ltss.core.hhsc.state.tx.us/ltsscore/1.1" xmlns:niemxsd="http://release.niem.gov/niem/proxy/xsd/3.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/3.0/" xmlns:s="http://release.niem.gov/niem/structures/3.0/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ltss.referralmanagement.hhsc.state.tx.us/extension/1.1" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="niem/niem-core/3.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/3.0/" />
+  <xsd:import schemaLocation="niem/proxy/xsd/3.0/xs.xsd" namespace="http://release.niem.gov/niem/proxy/xsd/3.0/" />
+  <xsd:import schemaLocation="ltssee.xsd" namespace="http://ltss.ee.hhsc.state.tx.us/ltssee/1.1" />
+  <xsd:import schemaLocation="ltsscore.xsd" namespace="http://ltss.core.hhsc.state.tx.us/ltsscore/1.1" />
+  <xsd:import schemaLocation="niem/structures/3.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/3.0/" />
+  <xsd:complexType name="RetrieveReferralInfoRequestPayloadType">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates the referral
+				ID, organization Id for retrieving
+				referral information of a client
+				and extends NIEM ObjectType .
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element ref="ltsscore:TransferHeader">
+            <xsd:annotation>
+              <xsd:documentation>Logging the user details of referral
+								send activity.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="ltsscore:ReferralID">
+            <xsd:annotation>
+              <xsd:documentation>Referral activity Id.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RetrieveReferralInfoResponsePayloadType">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates the
+				ReferralActivity and extends NIEM ObjectType .</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element ref="ltsscore:TransferHeader">
+            <xsd:annotation>
+              <xsd:documentation>Logging the user details of referral
+								send activity.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="ltsscore:ResponseMetadata">
+            <xsd:annotation>
+              <xsd:documentation>Response indicating success or failure
+								of the referral retrieval.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="ltssee:ScreeningApplication">
+            <xsd:annotation>
+              <xsd:documentation>The complete referral activity details for
+								the request referral ID.
+								This includes referral status and update
+								date.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GenerateReferralRequestPayloadType">
+    <xsd:annotation>
+      <xsd:documentation>The request type contains a complex object of
+				referrals identified by the system and referrals added by
+				the user
+				for generation.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element ref="ltsscore:TransferHeader" />
+          <xsd:element ref="ltsscore:ScreeningID" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ReferralsForGeneration" type="ltssee:ReferralType" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GenerateReferralResponsePayloadType">
+    <xsd:annotation>
+      <xsd:documentation>The response from service implementation on
+				whether generation of referrals succeeded</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element ref="ltsscore:TransferHeader" />
+          <xsd:element ref="ltsscore:ResponseMetadata" />
+          <xsd:element ref="ltsscore:ScreeningID" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="UpdateReferralInfoRequestPayloadType">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates the referral
+				ID, organization ID, status update for referral,
+				user comments and
+				extends NIEM ObjectType .</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element ref="ltsscore:TransferHeader" />
+          <xsd:element ref="ltsscore:ReferralID">
+            <xsd:annotation>
+              <xsd:documentation>Referral ID requested for update.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="ltssee:ReferralStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>Referral change to status.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReasonForUpdate" nillable="true" type="nc:TextType">
+            <xsd:annotation>
+              <xsd:documentation>Reason for changing the referral status.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReferralUpdatedBy" type="nc:PersonNameTextType">
+            <xsd:annotation>
+              <xsd:documentation>Referral updated by.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReferralUpdatedDate" type="niemxsd:dateTime">
+            <xsd:annotation>
+              <xsd:documentation>Referral update timestamp.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="UserComments" nillable="true" type="nc:TextType">
+            <xsd:annotation>
+              <xsd:documentation>User comments related to the transaction.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="UpdateReferralInfoResponsePayloadType">
+    <xsd:annotation>
+      <xsd:documentation>This complex type encapsulates the Response
+				Metadata indicating the success or
+				failure of referral status update
+				and extends NIEM ObjectType .
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ObjectType">
+        <xsd:sequence>
+          <xsd:element ref="ltsscore:TransferHeader" />
+          <xsd:element ref="ltsscore:ResponseMetadata">
+            <xsd:annotation>
+              <xsd:documentation>Response indicating success or failure
+								of the referral status update.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

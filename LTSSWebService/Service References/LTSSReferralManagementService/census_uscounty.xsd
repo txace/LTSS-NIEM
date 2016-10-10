@@ -1,0 +1,1310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:structures="http://release.niem.gov/niem/structures/3.0/" xmlns:appinfo="http://release.niem.gov/niem/appinfo/3.0/" xmlns:census="http://release.niem.gov/niem/codes/census_uscounty/3.0/" targetNamespace="http://release.niem.gov/niem/codes/census_uscounty/3.0/" version="1" xsi:schemaLocation="http://release.niem.gov/niem/appinfo/3.0/ ../../../appinfo/3.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../conformanceTargets/3.0/conformanceTargets.xsd" ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#ReferenceSchemaDocument" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../../../structures/3.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/3.0/" />
+  <xs:annotation>
+    <xs:documentation>County codes from US Census and ANSI.
+			Publication: INCITS 31:2009;
+			Version: 2009;
+			http://www.census.gov/geo/www/ansi/download.html
+			-
+			Modified to show county names instead of code in the enumeration.
+			-
+			Modified to include 'Other county' enumeration.</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="USCountyCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for US county codes.
+			</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Other county">
+        <xs:annotation>
+          <xs:documentation>T000 - Other county</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Anderson">
+        <xs:annotation>
+          <xs:documentation>T001 - Anderson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Andrews">
+        <xs:annotation>
+          <xs:documentation>T003 - Andrews County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Angelina">
+        <xs:annotation>
+          <xs:documentation>T005 - Angelina County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Aransas">
+        <xs:annotation>
+          <xs:documentation>T007 - Aransas County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Archer">
+        <xs:annotation>
+          <xs:documentation>T009 - Archer County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Armstrong">
+        <xs:annotation>
+          <xs:documentation>T011 - Armstrong County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Atascosa">
+        <xs:annotation>
+          <xs:documentation>T013 - Atascosa County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Austin">
+        <xs:annotation>
+          <xs:documentation>T015 - Austin County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bailey">
+        <xs:annotation>
+          <xs:documentation>T017 - Bailey County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bandera">
+        <xs:annotation>
+          <xs:documentation>T019 - Bandera County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bastrop">
+        <xs:annotation>
+          <xs:documentation>T021 - Bastrop County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Baylor">
+        <xs:annotation>
+          <xs:documentation>T023 - Baylor County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bee">
+        <xs:annotation>
+          <xs:documentation>T025 - Bee County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bell">
+        <xs:annotation>
+          <xs:documentation>T027 - Bell County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bexar">
+        <xs:annotation>
+          <xs:documentation>T029 - Bexar County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Blanco">
+        <xs:annotation>
+          <xs:documentation>T031 - Blanco County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Borden">
+        <xs:annotation>
+          <xs:documentation>T033 - Borden County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bosque">
+        <xs:annotation>
+          <xs:documentation>T035 - Bosque County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bowie">
+        <xs:annotation>
+          <xs:documentation>T037 - Bowie County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Brazoria">
+        <xs:annotation>
+          <xs:documentation>T039 - Brazoria County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Brazos">
+        <xs:annotation>
+          <xs:documentation>T041 - Brazos County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Brewster">
+        <xs:annotation>
+          <xs:documentation>T043 - Brewster County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Briscoe">
+        <xs:annotation>
+          <xs:documentation>T045 - Briscoe County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Brooks">
+        <xs:annotation>
+          <xs:documentation>T047 - Brooks County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Brown">
+        <xs:annotation>
+          <xs:documentation>T049 - Brown County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Burleson">
+        <xs:annotation>
+          <xs:documentation>T051 - Burleson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Burnet">
+        <xs:annotation>
+          <xs:documentation>T053 - Burnet County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Caldwell">
+        <xs:annotation>
+          <xs:documentation>T055 - Caldwell County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Calhoun">
+        <xs:annotation>
+          <xs:documentation>T057 - Calhoun County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Callahan">
+        <xs:annotation>
+          <xs:documentation>T059 - Callahan County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cameron">
+        <xs:annotation>
+          <xs:documentation>T061 - Cameron County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Camp">
+        <xs:annotation>
+          <xs:documentation>T063 - Camp County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Carson">
+        <xs:annotation>
+          <xs:documentation>T065 - Carson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cass">
+        <xs:annotation>
+          <xs:documentation>T067 - Cass County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Castro">
+        <xs:annotation>
+          <xs:documentation>T069 - Castro County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Chambers">
+        <xs:annotation>
+          <xs:documentation>T071 - Chambers County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cherokee">
+        <xs:annotation>
+          <xs:documentation>T073 - Cherokee County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Childress">
+        <xs:annotation>
+          <xs:documentation>T075 - Childress County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Clay">
+        <xs:annotation>
+          <xs:documentation>T077 - Clay County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cochran">
+        <xs:annotation>
+          <xs:documentation>T079 - Cochran County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Coke">
+        <xs:annotation>
+          <xs:documentation>T081 - Coke County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Coleman">
+        <xs:annotation>
+          <xs:documentation>T083 - Coleman County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Collin">
+        <xs:annotation>
+          <xs:documentation>T085 - Collin County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Collingsworth">
+        <xs:annotation>
+          <xs:documentation>T087 - Collingsworth County
+					</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Colorado">
+        <xs:annotation>
+          <xs:documentation>T089 - Colorado County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Comal">
+        <xs:annotation>
+          <xs:documentation>T091 - Comal County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Comanche">
+        <xs:annotation>
+          <xs:documentation>T093 - Comanche County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Concho">
+        <xs:annotation>
+          <xs:documentation>T095 - Concho County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cooke">
+        <xs:annotation>
+          <xs:documentation>T097 - Cooke County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Coryell">
+        <xs:annotation>
+          <xs:documentation>T099 - Coryell County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cottle">
+        <xs:annotation>
+          <xs:documentation>T101 - Cottle County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Crane">
+        <xs:annotation>
+          <xs:documentation>T103 - Crane County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Crockett">
+        <xs:annotation>
+          <xs:documentation>T105 - Crockett County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Crosby">
+        <xs:annotation>
+          <xs:documentation>T107 - Crosby County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Culberson">
+        <xs:annotation>
+          <xs:documentation>T109 - Culberson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Dallam">
+        <xs:annotation>
+          <xs:documentation>T111 - Dallam County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Dallas">
+        <xs:annotation>
+          <xs:documentation>T113 - Dallas County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Dawson">
+        <xs:annotation>
+          <xs:documentation>T115 - Dawson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Deaf Smith">
+        <xs:annotation>
+          <xs:documentation>T117 - Deaf Smith County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Delta">
+        <xs:annotation>
+          <xs:documentation>T119 - Delta County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Denton">
+        <xs:annotation>
+          <xs:documentation>T121 - Denton County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DeWitt">
+        <xs:annotation>
+          <xs:documentation>T123 - DeWitt County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Dickens">
+        <xs:annotation>
+          <xs:documentation>T125 - Dickens County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Dimmit">
+        <xs:annotation>
+          <xs:documentation>T127 - Dimmit County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Donley">
+        <xs:annotation>
+          <xs:documentation>T129 - Donley County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Duval">
+        <xs:annotation>
+          <xs:documentation>T131 - Duval County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Eastland">
+        <xs:annotation>
+          <xs:documentation>T133 - Eastland County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Ector">
+        <xs:annotation>
+          <xs:documentation>T135 - Ector County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Edwards">
+        <xs:annotation>
+          <xs:documentation>T137 - Edwards County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Ellis">
+        <xs:annotation>
+          <xs:documentation>T139 - Ellis County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="El Paso">
+        <xs:annotation>
+          <xs:documentation>T141 - El Paso County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Erath">
+        <xs:annotation>
+          <xs:documentation>T143 - Erath County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Falls">
+        <xs:annotation>
+          <xs:documentation>T145 - Falls County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Fannin">
+        <xs:annotation>
+          <xs:documentation>T147 - Fannin County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Fayette">
+        <xs:annotation>
+          <xs:documentation>T149 - Fayette County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Fisher">
+        <xs:annotation>
+          <xs:documentation>T151 - Fisher County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Floyd">
+        <xs:annotation>
+          <xs:documentation>T153 - Floyd County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Foard">
+        <xs:annotation>
+          <xs:documentation>T155 - Foard County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Fort Bend">
+        <xs:annotation>
+          <xs:documentation>T157 - Fort Bend County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Franklin">
+        <xs:annotation>
+          <xs:documentation>T159 - Franklin County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Freestone">
+        <xs:annotation>
+          <xs:documentation>T161 - Freestone County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Frio">
+        <xs:annotation>
+          <xs:documentation>T163 - Frio County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gaines">
+        <xs:annotation>
+          <xs:documentation>T165 - Gaines County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Galveston">
+        <xs:annotation>
+          <xs:documentation>T167 - Galveston County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Garza">
+        <xs:annotation>
+          <xs:documentation>T169 - Garza County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gillespie">
+        <xs:annotation>
+          <xs:documentation>T171 - Gillespie County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Glasscock">
+        <xs:annotation>
+          <xs:documentation>T173 - Glasscock County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Goliad">
+        <xs:annotation>
+          <xs:documentation>T175 - Goliad County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gonzales">
+        <xs:annotation>
+          <xs:documentation>T177 - Gonzales County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gray">
+        <xs:annotation>
+          <xs:documentation>T179 - Gray County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Grayson">
+        <xs:annotation>
+          <xs:documentation>T181 - Grayson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gregg">
+        <xs:annotation>
+          <xs:documentation>T183 - Gregg County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Grimes">
+        <xs:annotation>
+          <xs:documentation>T185 - Grimes County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Guadalupe">
+        <xs:annotation>
+          <xs:documentation>T187 - Guadalupe County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hale">
+        <xs:annotation>
+          <xs:documentation>T189 - Hale County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hall">
+        <xs:annotation>
+          <xs:documentation>T191 - Hall County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hamilton">
+        <xs:annotation>
+          <xs:documentation>T193 - Hamilton County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hansford">
+        <xs:annotation>
+          <xs:documentation>T195 - Hansford County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hardeman">
+        <xs:annotation>
+          <xs:documentation>T197 - Hardeman County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hardin">
+        <xs:annotation>
+          <xs:documentation>T199 - Hardin County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Harris">
+        <xs:annotation>
+          <xs:documentation>T201 - Harris County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Harrison">
+        <xs:annotation>
+          <xs:documentation>T203 - Harrison County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hartley">
+        <xs:annotation>
+          <xs:documentation>T205 - Hartley County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Haskell">
+        <xs:annotation>
+          <xs:documentation>T207 - Haskell County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hays">
+        <xs:annotation>
+          <xs:documentation>T209 - Hays County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hemphill">
+        <xs:annotation>
+          <xs:documentation>T211 - Hemphill County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Henderson">
+        <xs:annotation>
+          <xs:documentation>T213 - Henderson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hidalgo">
+        <xs:annotation>
+          <xs:documentation>T215 - Hidalgo County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hill">
+        <xs:annotation>
+          <xs:documentation>T217 - Hill County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hockley">
+        <xs:annotation>
+          <xs:documentation>T219 - Hockley County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hood">
+        <xs:annotation>
+          <xs:documentation>T221 - Hood County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hopkins">
+        <xs:annotation>
+          <xs:documentation>T223 - Hopkins County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Houston">
+        <xs:annotation>
+          <xs:documentation>T225 - Houston County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Howard">
+        <xs:annotation>
+          <xs:documentation>T227 - Howard County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hudspeth">
+        <xs:annotation>
+          <xs:documentation>T229 - Hudspeth County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hunt">
+        <xs:annotation>
+          <xs:documentation>T231 - Hunt County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hutchinson">
+        <xs:annotation>
+          <xs:documentation>T233 - Hutchinson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Irion">
+        <xs:annotation>
+          <xs:documentation>T235 - Irion County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Jack">
+        <xs:annotation>
+          <xs:documentation>T237 - Jack County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Jackson">
+        <xs:annotation>
+          <xs:documentation>T239 - Jackson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Jasper">
+        <xs:annotation>
+          <xs:documentation>T241 - Jasper County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Jeff Davis">
+        <xs:annotation>
+          <xs:documentation>T243 - Jeff Davis County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Jefferson">
+        <xs:annotation>
+          <xs:documentation>T245 - Jefferson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Jim Hogg">
+        <xs:annotation>
+          <xs:documentation>T247 - Jim Hogg County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Jim Wells">
+        <xs:annotation>
+          <xs:documentation>T249 - Jim Wells County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Johnson">
+        <xs:annotation>
+          <xs:documentation>T251 - Johnson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Jones">
+        <xs:annotation>
+          <xs:documentation>T253 - Jones County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Karnes">
+        <xs:annotation>
+          <xs:documentation>T255 - Karnes County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Kaufman">
+        <xs:annotation>
+          <xs:documentation>T257 - Kaufman County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Kendall">
+        <xs:annotation>
+          <xs:documentation>T259 - Kendall County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Kenedy">
+        <xs:annotation>
+          <xs:documentation>T261 - Kenedy County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Kent">
+        <xs:annotation>
+          <xs:documentation>T263 - Kent County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Kerr">
+        <xs:annotation>
+          <xs:documentation>T265 - Kerr County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Kimble">
+        <xs:annotation>
+          <xs:documentation>T267 - Kimble County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="King">
+        <xs:annotation>
+          <xs:documentation>T269 - King County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Kinney">
+        <xs:annotation>
+          <xs:documentation>T271 - Kinney County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Kleberg">
+        <xs:annotation>
+          <xs:documentation>T273 - Kleberg County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Knox">
+        <xs:annotation>
+          <xs:documentation>T275 - Knox County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Lamar">
+        <xs:annotation>
+          <xs:documentation>T277 - Lamar County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Lamb">
+        <xs:annotation>
+          <xs:documentation>T279 - Lamb County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Lampasas">
+        <xs:annotation>
+          <xs:documentation>T281 - Lampasas County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="La Salle">
+        <xs:annotation>
+          <xs:documentation>T283 - La Salle County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Lavaca">
+        <xs:annotation>
+          <xs:documentation>T285 - Lavaca County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Lee">
+        <xs:annotation>
+          <xs:documentation>T287 - Lee County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Leon">
+        <xs:annotation>
+          <xs:documentation>T289 - Leon County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Liberty">
+        <xs:annotation>
+          <xs:documentation>T291 - Liberty County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Limestone">
+        <xs:annotation>
+          <xs:documentation>T293 - Limestone County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Lipscomb">
+        <xs:annotation>
+          <xs:documentation>T295 - Lipscomb County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Live Oak">
+        <xs:annotation>
+          <xs:documentation>T297 - Live Oak County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Llano">
+        <xs:annotation>
+          <xs:documentation>T299 - Llano County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Loving">
+        <xs:annotation>
+          <xs:documentation>T301 - Loving County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Lubbock">
+        <xs:annotation>
+          <xs:documentation>T303 - Lubbock County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Lynn">
+        <xs:annotation>
+          <xs:documentation>T305 - Lynn County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="McCulloch">
+        <xs:annotation>
+          <xs:documentation>T307 - McCulloch County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="McLennan">
+        <xs:annotation>
+          <xs:documentation>T309 - McLennan County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="McMullen">
+        <xs:annotation>
+          <xs:documentation>T311 - McMullen County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Madison">
+        <xs:annotation>
+          <xs:documentation>T313 - Madison County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Marion">
+        <xs:annotation>
+          <xs:documentation>T315 - Marion County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Martin">
+        <xs:annotation>
+          <xs:documentation>T317 - Martin County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Mason">
+        <xs:annotation>
+          <xs:documentation>T319 - Mason County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Matagorda">
+        <xs:annotation>
+          <xs:documentation>T321 - Matagorda County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Maverick">
+        <xs:annotation>
+          <xs:documentation>T323 - Maverick County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Medina">
+        <xs:annotation>
+          <xs:documentation>T325 - Medina County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Menard">
+        <xs:annotation>
+          <xs:documentation>T327 - Menard County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Midland">
+        <xs:annotation>
+          <xs:documentation>T329 - Midland County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Milam">
+        <xs:annotation>
+          <xs:documentation>T331 - Milam County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Mills">
+        <xs:annotation>
+          <xs:documentation>T333 - Mills County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Mitchell">
+        <xs:annotation>
+          <xs:documentation>T335 - Mitchell County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Montague">
+        <xs:annotation>
+          <xs:documentation>T337 - Montague County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Montgomery">
+        <xs:annotation>
+          <xs:documentation>T339 - Montgomery County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Moore">
+        <xs:annotation>
+          <xs:documentation>T341 - Moore County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Morris">
+        <xs:annotation>
+          <xs:documentation>T343 - Morris County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Motley">
+        <xs:annotation>
+          <xs:documentation>T345 - Motley County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Nacogdoches">
+        <xs:annotation>
+          <xs:documentation>T347 - Nacogdoches County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Navarro">
+        <xs:annotation>
+          <xs:documentation>T349 - Navarro County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Newton">
+        <xs:annotation>
+          <xs:documentation>T351 - Newton County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Nolan">
+        <xs:annotation>
+          <xs:documentation>T353 - Nolan County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Nueces">
+        <xs:annotation>
+          <xs:documentation>T355 - Nueces County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Ochiltree">
+        <xs:annotation>
+          <xs:documentation>T357 - Ochiltree County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Oldham">
+        <xs:annotation>
+          <xs:documentation>T359 - Oldham County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Orange">
+        <xs:annotation>
+          <xs:documentation>T361 - Orange County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Palo Pinto">
+        <xs:annotation>
+          <xs:documentation>T363 - Palo Pinto County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Panola">
+        <xs:annotation>
+          <xs:documentation>T365 - Panola County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Parker">
+        <xs:annotation>
+          <xs:documentation>T367 - Parker County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Parmer">
+        <xs:annotation>
+          <xs:documentation>T369 - Parmer County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Pecos">
+        <xs:annotation>
+          <xs:documentation>T371 - Pecos County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Polk">
+        <xs:annotation>
+          <xs:documentation>T373 - Polk County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Potter">
+        <xs:annotation>
+          <xs:documentation>T375 - Potter County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Presidio">
+        <xs:annotation>
+          <xs:documentation>T377 - Presidio County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Rains">
+        <xs:annotation>
+          <xs:documentation>T379 - Rains County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Randall">
+        <xs:annotation>
+          <xs:documentation>T381 - Randall County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Reagan">
+        <xs:annotation>
+          <xs:documentation>T383 - Reagan County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Real">
+        <xs:annotation>
+          <xs:documentation>T385 - Real County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Red River">
+        <xs:annotation>
+          <xs:documentation>T387 - Red River County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Reeves">
+        <xs:annotation>
+          <xs:documentation>T389 - Reeves County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Refugio">
+        <xs:annotation>
+          <xs:documentation>T391 - Refugio County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Roberts">
+        <xs:annotation>
+          <xs:documentation>T393 - Roberts County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Robertson">
+        <xs:annotation>
+          <xs:documentation>T395 - Robertson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Rockwall">
+        <xs:annotation>
+          <xs:documentation>T397 - Rockwall County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Runnels">
+        <xs:annotation>
+          <xs:documentation>T399 - Runnels County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Rusk">
+        <xs:annotation>
+          <xs:documentation>T401 - Rusk County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Sabine">
+        <xs:annotation>
+          <xs:documentation>T403 - Sabine County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="San Augustine">
+        <xs:annotation>
+          <xs:documentation>T405 - San Augustine County
+					</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="San Jacinto">
+        <xs:annotation>
+          <xs:documentation>T407 - San Jacinto County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="San Patricio">
+        <xs:annotation>
+          <xs:documentation>T409 - San Patricio County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="San Saba">
+        <xs:annotation>
+          <xs:documentation>T411 - San Saba County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Schleicher">
+        <xs:annotation>
+          <xs:documentation>T413 - Schleicher County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Scurry">
+        <xs:annotation>
+          <xs:documentation>T415 - Scurry County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Shackelford">
+        <xs:annotation>
+          <xs:documentation>T417 - Shackelford County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Shelby">
+        <xs:annotation>
+          <xs:documentation>T419 - Shelby County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Sherman">
+        <xs:annotation>
+          <xs:documentation>T421 - Sherman County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Smith">
+        <xs:annotation>
+          <xs:documentation>T423 - Smith County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Somervell">
+        <xs:annotation>
+          <xs:documentation>T425 - Somervell County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Starr">
+        <xs:annotation>
+          <xs:documentation>T427 - Starr County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Stephens">
+        <xs:annotation>
+          <xs:documentation>T429 - Stephens County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Sterling">
+        <xs:annotation>
+          <xs:documentation>T431 - Sterling County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Stonewall">
+        <xs:annotation>
+          <xs:documentation>T433 - Stonewall County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Sutton">
+        <xs:annotation>
+          <xs:documentation>T435 - Sutton County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Swisher">
+        <xs:annotation>
+          <xs:documentation>T437 - Swisher County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Tarrant">
+        <xs:annotation>
+          <xs:documentation>T439 - Tarrant County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Taylor">
+        <xs:annotation>
+          <xs:documentation>T441 - Taylor County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Terrell">
+        <xs:annotation>
+          <xs:documentation>T443 - Terrell County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Terry">
+        <xs:annotation>
+          <xs:documentation>T445 - Terry County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Throckmorton">
+        <xs:annotation>
+          <xs:documentation>T447 - Throckmorton County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Titus">
+        <xs:annotation>
+          <xs:documentation>T449 - Titus County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Tom Green">
+        <xs:annotation>
+          <xs:documentation>T451 - Tom Green County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Travis">
+        <xs:annotation>
+          <xs:documentation>T453 - Travis County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Trinity">
+        <xs:annotation>
+          <xs:documentation>T455 - Trinity County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Tyler">
+        <xs:annotation>
+          <xs:documentation>T457 - Tyler County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Upshur">
+        <xs:annotation>
+          <xs:documentation>T459 - Upshur County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Upton">
+        <xs:annotation>
+          <xs:documentation>T461 - Upton County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Uvalde">
+        <xs:annotation>
+          <xs:documentation>T463 - Uvalde County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Val Verde">
+        <xs:annotation>
+          <xs:documentation>T465 - Val Verde County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Van Zandt">
+        <xs:annotation>
+          <xs:documentation>T467 - Van Zandt County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Victoria">
+        <xs:annotation>
+          <xs:documentation>T469 - Victoria County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Walker">
+        <xs:annotation>
+          <xs:documentation>T471 - Walker County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Waller">
+        <xs:annotation>
+          <xs:documentation>T473 - Waller County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Ward">
+        <xs:annotation>
+          <xs:documentation>T475 - Ward County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Washington">
+        <xs:annotation>
+          <xs:documentation>T477 - Washington County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Webb">
+        <xs:annotation>
+          <xs:documentation>T479 - Webb County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Wharton">
+        <xs:annotation>
+          <xs:documentation>T481 - Wharton County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Wheeler">
+        <xs:annotation>
+          <xs:documentation>T483 - Wheeler County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Wichita">
+        <xs:annotation>
+          <xs:documentation>T485 - Wichita County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Wilbarger">
+        <xs:annotation>
+          <xs:documentation>T487 - Wilbarger County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Willacy">
+        <xs:annotation>
+          <xs:documentation>T489 - Willacy County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Williamson">
+        <xs:annotation>
+          <xs:documentation>T491 - Williamson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Wilson">
+        <xs:annotation>
+          <xs:documentation>T493 - Wilson County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Winkler">
+        <xs:annotation>
+          <xs:documentation>T495 - Winkler County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Wise">
+        <xs:annotation>
+          <xs:documentation>T497 - Wise County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Wood">
+        <xs:annotation>
+          <xs:documentation>T499 - Wood County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Yoakum">
+        <xs:annotation>
+          <xs:documentation>T501 - Yoakum County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Young">
+        <xs:annotation>
+          <xs:documentation>T503 - Young County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Zapata">
+        <xs:annotation>
+          <xs:documentation>T505 - Zapata County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Zavala">
+        <xs:annotation>
+          <xs:documentation>T507 - Zavala County</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="USCountyCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for US county codes.
+			</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="census:USCountyCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
