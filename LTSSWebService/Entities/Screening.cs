@@ -131,6 +131,8 @@ namespace LTSSWebService.Models
 
         public DateTime? MedicaidInformationDateTime1 { get; set; }
 
+        public string PersonActiveMilitaryIndicator { get; set; }
+
         public string PersonCaretakerDependentCode { get; set; }
 
         public string PersonCmbhsID { get; set; }
@@ -150,6 +152,8 @@ namespace LTSSWebService.Models
         public string PersonTiersID { get; set; }
 
         public bool? PersonUSVeteranIndicator { get; set; }
+
+        public string PersonVeteranMilitaryIndicator { get; set; }
 
         public virtual ICollection<Referral> Referral { get; set; }
 

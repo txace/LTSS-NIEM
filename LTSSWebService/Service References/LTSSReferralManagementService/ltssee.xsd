@@ -642,6 +642,8 @@
           <xsd:element minOccurs="0" ref="ltsscore:USNaturalizedCitizenIndicator" />
           <xsd:element minOccurs="0" ref="ltsscore:PersonMarriedIndicator" />
           <xsd:element minOccurs="0" ref="ltsscore:PersonUSVeteranIndicator" />
+          <xsd:element minOccurs="0" ref="ltsscore:PersonVeteranMilitaryIndicator" />
+          <xsd:element minOccurs="0" ref="ltsscore:PersonActiveMilitaryIndicator" />
           <xsd:element minOccurs="0" ref="ltsscore:PersonTiersID" />
           <xsd:element minOccurs="0" ref="ltsscore:PersonCsilID" />
           <xsd:element minOccurs="0" ref="ltsscore:PersonCmbhsID" />

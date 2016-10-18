@@ -1,5 +1,4 @@
 ﻿using Application.ActionExtensions;
-using Application.Data.XML;
 using Application.ExceptionExtensions;
 using Application.GenericExtensions;
 using Application.IEnumerableExtensions;
@@ -135,7 +134,9 @@ namespace LTSSWebService
                 DataEnteredBy = x?.DataEnteredBy?.Value,
                 EnteredDateTime = x?.EnteredDateTime?.Value,
                 Comments = x?.Comments?.Value,
+                PersonActiveMilitaryIndicator = x?.ScreeningApplicant?.PersonActiveMilitaryIndicator?.Value.ToSafeString(), // is Enum
                 PersonLtssID = x?.ScreeningApplicant?.PersonLtssID?.IdentificationID?.Value,
+                PersonVeteranMilitaryIndicator = x?.ScreeningApplicant?.PersonVeteranMilitaryIndicator?.Value.ToSafeString(), // is Enum
                 ReferringOrganization = x?.ScreeningApplicant?.AuthorizedRepresentative?.ReferringOrganization?.Value,
                 CareRecipientHasCognitiveImpairment = x?.ScreeningApplicant?.CareRecipient?.CareRecipientHasCognitiveImpairment?.Value,
                 CareRecipientHasOtherDisabilities = x?.ScreeningApplicant?.CareRecipient?.CareRecipientHasOtherDisabilities?.Value,

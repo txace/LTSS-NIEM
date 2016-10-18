@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0f9c6cde-0504-4500-8f31-cb8a4f16ece7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8ace79a4-b6b0-40e2-b73e-692e4eaefe19" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,25 +19,25 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="C:\Users\10524\Desktop\ltss-niem3.0wsdl\LTSSReferralManagementService.wsdl" Protocol="file" SourceId="1" />
+    <MetadataSource Address="C:\Users\10524\Desktop\LTSSReferralManagementService\LTSSReferralManagementService.wsdl" Protocol="file" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="iso_3166-1.xsd" MetadataType="Schema" ID="3cdcd9ac-596e-4e06-8dc1-57b3785b5bd2" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/niem/codes/iso_3166-1/3.0/iso_3166-1.xsd" />
-    <MetadataFile FileName="xCard.xsd" MetadataType="Schema" ID="f618dab9-6200-4a4e-96f8-c16ce165f313" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/niem/codes/xCard/3.0/xCard.xsd" />
-    <MetadataFile FileName="ltssee.xsd" MetadataType="Schema" ID="04afbb52-28e9-42d6-aa69-390a24c7d1a5" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/ltssee.xsd" />
-    <MetadataFile FileName="census_uscounty.xsd" MetadataType="Schema" ID="cc100b44-7fb8-434a-a3e5-6ebee911c887" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/niem/codes/census_uscounty/3.0/census_uscounty.xsd" />
-    <MetadataFile FileName="fbi_ucr.xsd" MetadataType="Schema" ID="580d6026-38c5-4728-ab7e-1be1acc8f7fc" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/niem/codes/fbi_ucr/3.0/fbi_ucr.xsd" />
-    <MetadataFile FileName="xs.xsd" MetadataType="Schema" ID="593ede59-5330-4fbf-b3d2-45616ce10d4c" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/niem/proxy/xsd/3.0/xs.xsd" />
-    <MetadataFile FileName="LTSSReferralManagementExchangeModel.xsd" MetadataType="Schema" ID="ba1f93a8-e01f-4e7a-83bc-e1c26e0652a1" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/LTSSReferralManagementExchangeModel.xsd" />
-    <MetadataFile FileName="core_misc.xsd" MetadataType="Schema" ID="b5e572b8-c8aa-4152-8eeb-5b57fcd6ec58" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/niem/codes/core_misc/3.0/core_misc.xsd" />
-    <MetadataFile FileName="ltsscore.xsd" MetadataType="Schema" ID="7671e699-f85a-4719-9402-2b48868d3b50" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/ltsscore.xsd" />
-    <MetadataFile FileName="structures.xsd" MetadataType="Schema" ID="6b2ac650-2de9-48b7-8596-3af6688cdca6" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/niem/structures/3.0/structures.xsd" />
-    <MetadataFile FileName="LTSSReferralManagementExtensionModel.xsd" MetadataType="Schema" ID="6a4fb237-3b68-4381-9804-8634e408cf8c" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/LTSSReferralManagementExtensionModel.xsd" />
-    <MetadataFile FileName="niem-core.xsd" MetadataType="Schema" ID="7ae154ac-24ee-474d-8d04-3b24f1d9d291" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/niem/niem-core/3.0/niem-core.xsd" />
-    <MetadataFile FileName="ltsstypes.xsd" MetadataType="Schema" ID="159f07e4-ca2d-4376-827e-8406f4554c38" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/ltsstypes.xsd" />
-    <MetadataFile FileName="LTSSReferralManagementService.wsdl" MetadataType="Wsdl" ID="d32d6055-f56d-49e0-881a-4f617ebc470f" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/LTSSReferralManagementService.wsdl" />
-    <MetadataFile FileName="fbi_ncic.xsd" MetadataType="Schema" ID="1b476a97-98bd-4f68-aa89-dd696a74849e" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/niem/codes/fbi_ncic/3.0/fbi_ncic.xsd" />
-    <MetadataFile FileName="usps_states.xsd" MetadataType="Schema" ID="2f3152de-690d-4b5f-a92b-b429161410d5" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/ltss-niem3.0wsdl/niem/codes/usps_states/3.0/usps_states.xsd" />
+    <MetadataFile FileName="structures.xsd" MetadataType="Schema" ID="e74a5e6a-f032-42d2-881b-d0ed069e4e06" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/niem/structures/3.0/structures.xsd" />
+    <MetadataFile FileName="xCard.xsd" MetadataType="Schema" ID="a2f4e281-9a72-4c80-86a6-a6a4b1bc53f7" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/niem/codes/xCard/3.0/xCard.xsd" />
+    <MetadataFile FileName="ltssee.xsd" MetadataType="Schema" ID="c91d2258-6385-4841-830e-6dbc06a17494" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/ltssee.xsd" />
+    <MetadataFile FileName="fbi_ncic.xsd" MetadataType="Schema" ID="29f6f1a2-fbff-48b7-844b-e920f4feff86" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/niem/codes/fbi_ncic/3.0/fbi_ncic.xsd" />
+    <MetadataFile FileName="core_misc.xsd" MetadataType="Schema" ID="eb4d228f-f3ce-428d-97f2-b7ebc52c472a" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/niem/codes/core_misc/3.0/core_misc.xsd" />
+    <MetadataFile FileName="iso_3166-1.xsd" MetadataType="Schema" ID="57916465-c4e7-4035-ba32-d5f6075bb382" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/niem/codes/iso_3166-1/3.0/iso_3166-1.xsd" />
+    <MetadataFile FileName="xs.xsd" MetadataType="Schema" ID="9fbcaac7-c717-4081-972f-4223be7a6e9d" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/niem/proxy/xsd/3.0/xs.xsd" />
+    <MetadataFile FileName="census_uscounty.xsd" MetadataType="Schema" ID="2efca9e1-afee-433f-82a6-ddbbbb2745cc" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/niem/codes/census_uscounty/3.0/census_uscounty.xsd" />
+    <MetadataFile FileName="LTSSReferralManagementService.wsdl" MetadataType="Wsdl" ID="16d29df8-2370-4a1a-b48e-013d7487f430" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/LTSSReferralManagementService.wsdl" />
+    <MetadataFile FileName="niem-core.xsd" MetadataType="Schema" ID="eecf7ddd-e633-4d0b-b872-0ad62d2c0344" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/niem/niem-core/3.0/niem-core.xsd" />
+    <MetadataFile FileName="LTSSReferralManagementExtensionModel.xsd" MetadataType="Schema" ID="9c9cd6ff-3611-47f5-8c20-48e7c73835bd" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/LTSSReferralManagementExtensionModel.xsd" />
+    <MetadataFile FileName="ltsstypes.xsd" MetadataType="Schema" ID="9a7f5dc9-baad-4b3d-9db2-4d70242edefb" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/ltsstypes.xsd" />
+    <MetadataFile FileName="fbi_ucr.xsd" MetadataType="Schema" ID="01eaf9dd-3b04-4150-adc1-dec76e80c4ee" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/niem/codes/fbi_ucr/3.0/fbi_ucr.xsd" />
+    <MetadataFile FileName="usps_states.xsd" MetadataType="Schema" ID="674e4a64-2924-4c71-8c60-77b53a117d5a" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/niem/codes/usps_states/3.0/usps_states.xsd" />
+    <MetadataFile FileName="LTSSReferralManagementExchangeModel.xsd" MetadataType="Schema" ID="cccc3131-2af1-45ac-872b-e72919e3397e" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/LTSSReferralManagementExchangeModel.xsd" />
+    <MetadataFile FileName="ltsscore.xsd" MetadataType="Schema" ID="eb79cb4b-d6a5-47db-986f-843ca6b593fc" SourceId="1" SourceUrl="file:///C:/Users/10524/Desktop/LTSSReferralManagementService/ltsscore.xsd" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

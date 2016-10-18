@@ -1,5 +1,4 @@
-﻿using Application.Data.XML;
-using LTSSWebService;
+﻿using LTSSWebService;
 using System;
 using System.ServiceModel.Channels;
 

@@ -96,6 +96,10 @@
       <DependentUpon>201609291747517_Initial-Migration.cs</DependentUpon>
     </Compile>
     <Compile Include="GetResponse.cs" />
+    <Compile Include="Migrations\201610181843553_Release98Schema.cs" />
+    <Compile Include="Migrations\201610181843553_Release98Schema.Designer.cs">
+      <DependentUpon>201610181843553_Release98Schema.cs</DependentUpon>
+    </Compile>
     <Compile Include="NormalizeData.cs" />
     <Compile Include="IServiceExtensions.cs" />
     <Compile Include="IService.cs" />
@@ -104,14 +108,14 @@
     <Compile Include="Repository.cs" />
     <Compile Include="ReferralDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ReferralService.cs" />
-    <Compile Include="Entities\Request.cs" />
-    <Compile Include="Schema.cs" />
     <Compile Include="Service References\LTSSReferralManagementService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Services\ReferralService.cs" />
+    <Compile Include="Entities\Request.cs" />
+    <Compile Include="Schema.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -187,6 +191,14 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201609291747517_Initial-Migration.resx">
+      <DependentUpon>201609291747517_Initial-Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610181843553_Release98Schema.resx">
+      <DependentUpon>201610181843553_Release98Schema.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Service References\LTSSReferralManagementService\" />
   </ItemGroup>
   <ItemGroup>
@@ -200,11 +212,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609291747517_Initial-Migration.resx">
-      <DependentUpon>201609291747517_Initial-Migration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

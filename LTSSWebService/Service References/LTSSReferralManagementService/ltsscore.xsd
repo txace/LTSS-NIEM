@@ -185,6 +185,18 @@
       <xsd:documentation>Global type for Person's military service indicator.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:element name="PersonActiveMilitaryIndicator" type="ltsstypes:ApplicantAnswerType">
+    <xsd:annotation>
+      <xsd:documentation>Yes if a person or any family member is active in military; No if not; No Answer if answer is not provided.</xsd:documentation>
+      <xsd:documentation>Global type for Person's active military service indicator.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PersonVeteranMilitaryIndicator" type="ltsstypes:ApplicantAnswerType">
+    <xsd:annotation>
+      <xsd:documentation>Yes if a person or any family member is veteran from military; No if not; No Answer if answer is not provided.</xsd:documentation>
+      <xsd:documentation>Global type for Person's past military service indicator.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="OrganizationType">
     <xsd:annotation>
       <xsd:appinfo>true&lt;AugmentedTypeIndicator xmlns="http://release.niem.gov/niem/appinfo/3.0/"&gt;true&lt;/AugmentedTypeIndicator&gt;

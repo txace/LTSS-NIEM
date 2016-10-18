@@ -28,6 +28,11 @@ namespace DigestPasswordNS
 
         public abstract string ResponseTemplate { get; }
 
+        public static string UnescapeXMLValue(string xmlString)
+        {
+            return xmlString.Replace("&apos;", "'").Replace("&quot;", "\"").Replace("&gt;", ">").Replace("&lt;", "<").Replace("&amp;", "&");
+        }
+
         public void AddBindingParameters(ServiceEndpoint endpoint, BindingParameterCollection bindingParameters)
         {
         }
@@ -83,7 +88,7 @@ namespace DigestPasswordNS
             </wsse:UsernameToken>
 		</wsse:Security>";
 
-            var Document = XDocument.Parse(EvaluateResponseTemplate(ResponseTemplate).Replace("[SECURITY]", Security));
+            var Document = XDocument.Parse(UnescapeXMLValue(EvaluateResponseTemplate(ResponseTemplate).Replace("[SECURITY]", Security)));
             request = Message.CreateMessage(XmlDictionaryReader.CreateDictionaryReader(Document.CreateReader()), int.MaxValue, request.Version);
 
             return correlationState;
