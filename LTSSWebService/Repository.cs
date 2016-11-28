@@ -115,9 +115,10 @@ namespace LTSSWebService
             }
         }
 
-        public static HashSet<ContactEntity> SaveContactEntity(this ReferralDbContext context, IList<object> request)
+        public static List<ContactEntity> SaveContactEntity(this ReferralDbContext context, IList<object> request)
         {
-            var DistinctContacts = ObjectExtensions.InjectIntoList<ContactEntity>(request)
+            var Contacts = ObjectExtensions.InjectIntoList<ContactEntity>(request);
+            var DistinctContacts = Contacts
             .Where(x => !ContactEntityComparer.IsEmpty(x))
             .GroupBy(x => x, ContactEntityComparer.Comparer)
             .Select(x =>
@@ -186,7 +187,7 @@ namespace LTSSWebService
 
                 localContext.SaveChanges();
 
-                return result;
+                return Contacts.Select(x => result.Where(y => ContactEntityComparer.Comparer.Equals(x, y)).FirstOrDefault()).ToList();
             }
         }
 
@@ -199,9 +200,10 @@ namespace LTSSWebService
             }
         }
 
-        public static HashSet<Location> SaveLocation(this ReferralDbContext context, IList<object> request)
+        public static List<Location> SaveLocation(this ReferralDbContext context, IList<object> request)
         {
-            var DistinctLocations = ObjectExtensions.InjectIntoList<Location>(request)
+            var Locations = ObjectExtensions.InjectIntoList<Location>(request);
+            var DistinctLocations = Locations
             .GroupBy(x => x, new LocationComparer())
             .Select(x =>
             {
@@ -234,13 +236,14 @@ namespace LTSSWebService
 
                 localContext.SaveChanges();
 
-                return result;
+                return Locations.Select(x => result.Where(y => LocationComparer.Comparer.Equals(x, y)).FirstOrDefault()).ToList();
             }
         }
 
-        public static HashSet<Organization> SaveOrganization(this ReferralDbContext context, IList<object> request)
+        public static List<Organization> SaveOrganization(this ReferralDbContext context, IList<object> request)
         {
-            var DistinctOrganizations = ObjectExtensions.InjectIntoList<Organization>(request)
+            var Organizations = ObjectExtensions.InjectIntoList<Organization>(request);
+            var DistinctOrganizations = Organizations
             .GroupBy(x => x, new OrganizationComparer())
             .Select(x =>
             {
@@ -273,7 +276,7 @@ namespace LTSSWebService
 
                 localContext.SaveChanges();
 
-                return result;
+                return Organizations.Select(x => result.Where(y => OrganizationComparer.Comparer.Equals(x, y)).FirstOrDefault()).ToList();
             }
         }
 

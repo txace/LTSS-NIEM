@@ -30,6 +30,8 @@ namespace LTSSWebService.Models
 
     public class OrganizationComparer : IEqualityComparer<Organization>
     {
+        public static readonly OrganizationComparer Comparer = new OrganizationComparer();
+
         public bool Equals(Organization x, Organization y)
         {
             if (x == null || y == null)
@@ -37,6 +39,8 @@ namespace LTSSWebService.Models
             if (object.ReferenceEquals(x, y))
                 return true;
             if (x.OrganizationIdentification == y.OrganizationIdentification)
+                return true;
+            if (x.OrganizationID != 0 && x.OrganizationID == y.OrganizationID)
                 return true;
             return false;
         }

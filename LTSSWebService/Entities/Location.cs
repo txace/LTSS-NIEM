@@ -30,6 +30,8 @@ namespace LTSSWebService.Models
 
     public class LocationComparer : IEqualityComparer<Location>
     {
+        public static readonly LocationComparer Comparer = new LocationComparer();
+
         public bool Equals(Location x, Location y)
         {
             if (x == null || y == null)
@@ -37,6 +39,8 @@ namespace LTSSWebService.Models
             if (object.ReferenceEquals(x, y))
                 return true;
             if (x.LocationIdentification == y.LocationIdentification)
+                return true;
+            if (x.LocationID != 0 && x.LocationID == y.LocationID)
                 return true;
             return false;
         }

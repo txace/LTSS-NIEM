@@ -83,6 +83,11 @@ namespace LTSSWebService.Models
             if (object.ReferenceEquals(x, y))
                 return true;
 
+            if (x.ContactEntityID != 0 && x.ContactEntityID == y.ContactEntityID)
+            {
+                return true;
+            }
+
             if (!string.IsNullOrWhiteSpace(x.PersonSSNIdentification) && !string.IsNullOrWhiteSpace(y.PersonSSNIdentification))
             {
                 return x.PersonSSNIdentification == y.PersonSSNIdentification;
