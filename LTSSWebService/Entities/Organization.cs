@@ -8,9 +8,7 @@ namespace LTSSWebService.Models
     {
         public virtual ICollection<Referral> DestinationOrganizationReferral { get; set; }
 
-        public virtual Location Location { get; set; }
-
-        public int? LocationID { get; set; }
+        public virtual ICollection<Location> Location { get; set; }
 
         public string OrganizationBranchName { get; set; }
 
@@ -38,7 +36,7 @@ namespace LTSSWebService.Models
                 return false;
             if (object.ReferenceEquals(x, y))
                 return true;
-            if (x.OrganizationIdentification == y.OrganizationIdentification)
+            if (x.OrganizationIdentification == y.OrganizationIdentification && x.OrganizationName == y.OrganizationName)
                 return true;
             if (x.OrganizationID != 0 && x.OrganizationID == y.OrganizationID)
                 return true;
@@ -47,7 +45,7 @@ namespace LTSSWebService.Models
 
         public int GetHashCode(Organization obj)
         {
-            return obj.OrganizationIdentification.GetHashCode();
+            return obj.OrganizationIdentification.GetHashCode() + 3 * obj.OrganizationName.GetHashCode();
         }
     }
 
@@ -64,6 +62,9 @@ namespace LTSSWebService.Models
             .WithRequired(e => e.DestinationOrganization)
             .HasForeignKey(e => e.DestinationOrganizationID)
             .WillCascadeOnDelete(false);
+
+            HasMany(e => e.Location)
+            .WithRequired(e => e.Organization);
         }
     }
 }

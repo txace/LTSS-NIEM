@@ -1,7 +1,6 @@
 ﻿using Application.Data.XML;
 using Application.ExceptionExtensions;
 using Application.GenericExtensions;
-using Application.IDictionaryExtensions;
 using Application.IEnumerableExtensions;
 using Application.ObjectExtensions;
 using Application.PropertyFieldInfoExtensions;
@@ -214,23 +213,23 @@ namespace LTSSWebService
                 return Location;
             }).ToList();
 
-            var result = new HashSet<Location>(new LocationComparer());
+            var result = new HashSet<Location>(LocationComparer.Comparer);
             var localContext = context ?? new ReferralDbContext();
             using (context != null ? null : localContext)
             {
-                var LocationIdentifications = DistinctLocations.Select(x => x.LocationIdentification)
-                    .Where(x => !string.IsNullOrEmpty(x)).AsQueryable();
-
-                var LocationIdentificationDictionary = localContext.Location.Where(x => LocationIdentifications.Contains(x.LocationIdentification))
-                    .ToDictionary(x => x.LocationIdentification, x => x);
-
                 for (var i = 0; i < DistinctLocations.Count; i++)
                 {
                     var location = DistinctLocations[i];
 
-                    var Location = LocationIdentificationDictionary.GetValueOrDefault(location.LocationIdentification);
-                    localContext.SaveEntity(ref Location, ref location);
+                    Location Location = null;
+                    var query = localContext.Location.AsQueryable();
+                    if (!string.IsNullOrWhiteSpace(location.LocationIdentification) && location.OrganizationID > 0)
+                    {
+                        Location = query.Where(x => x.LocationIdentification == location.LocationIdentification &&
+                                                        x.OrganizationID == location.OrganizationID).FirstOrDefault();
+                    }
 
+                    localContext.SaveEntity(ref Location, ref location);
                     result.Add(location);
                 }
 
@@ -254,23 +253,23 @@ namespace LTSSWebService
                 return Organization;
             }).ToList();
 
-            var result = new HashSet<Organization>(new OrganizationComparer());
+            var result = new HashSet<Organization>(OrganizationComparer.Comparer);
             var localContext = context ?? new ReferralDbContext();
             using (context != null ? null : localContext)
             {
-                var OrganizationIdentifications = DistinctOrganizations.Select(x => x.OrganizationIdentification)
-                    .Where(x => !string.IsNullOrEmpty(x)).AsQueryable();
-
-                var OrganizationIdentificationDictionary = localContext.Organization.Where(x => OrganizationIdentifications.Contains(x.OrganizationIdentification))
-                    .ToDictionary(x => x.OrganizationIdentification, x => x);
-
                 for (var i = 0; i < DistinctOrganizations.Count; i++)
                 {
                     var organization = DistinctOrganizations[i];
 
-                    var Organization = OrganizationIdentificationDictionary.GetValueOrDefault(organization.OrganizationIdentification);
-                    localContext.SaveEntity(ref Organization, ref organization);
+                    Organization Organization = null;
+                    var query = localContext.Organization.AsQueryable();
+                    if (!string.IsNullOrWhiteSpace(organization.OrganizationIdentification) && !string.IsNullOrWhiteSpace(organization.OrganizationName))
+                    {
+                        Organization = query.Where(x => x.OrganizationIdentification == organization.OrganizationIdentification &&
+                                                        x.OrganizationName == organization.OrganizationName).FirstOrDefault();
+                    }
 
+                    localContext.SaveEntity(ref Organization, ref organization);
                     result.Add(organization);
                 }
 

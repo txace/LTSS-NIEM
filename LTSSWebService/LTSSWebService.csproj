@@ -100,6 +100,10 @@
     <Compile Include="Migrations\201610181843553_Release98Schema.Designer.cs">
       <DependentUpon>201610181843553_Release98Schema.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612091817315_MovedConstraintFromOrganizationToLocation.cs" />
+    <Compile Include="Migrations\201612091817315_MovedConstraintFromOrganizationToLocation.Designer.cs">
+      <DependentUpon>201612091817315_MovedConstraintFromOrganizationToLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="NormalizeData.cs" />
     <Compile Include="IServiceExtensions.cs" />
     <Compile Include="IService.cs" />
@@ -196,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610181843553_Release98Schema.resx">
       <DependentUpon>201610181843553_Release98Schema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612091817315_MovedConstraintFromOrganizationToLocation.resx">
+      <DependentUpon>201612091817315_MovedConstraintFromOrganizationToLocation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

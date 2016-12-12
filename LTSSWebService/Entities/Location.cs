@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Entity.ModelConfiguration;
 
 namespace LTSSWebService.Models
 {
@@ -25,7 +24,9 @@ namespace LTSSWebService.Models
 
         public decimal? LongitudeSecondValue { get; set; }
 
-        public virtual ICollection<Organization> Organization { get; set; }
+        public virtual Organization Organization { get; set; }
+
+        public int? OrganizationID { get; set; }
     }
 
     public class LocationComparer : IEqualityComparer<Location>
@@ -38,7 +39,7 @@ namespace LTSSWebService.Models
                 return false;
             if (object.ReferenceEquals(x, y))
                 return true;
-            if (x.LocationIdentification == y.LocationIdentification)
+            if (x.LocationIdentification == y.LocationIdentification && x.OrganizationID == y.OrganizationID)
                 return true;
             if (x.LocationID != 0 && x.LocationID == y.LocationID)
                 return true;
@@ -48,15 +49,6 @@ namespace LTSSWebService.Models
         public int GetHashCode(Location obj)
         {
             return obj.LocationIdentification.GetHashCode();
-        }
-    }
-
-    public class LocationConfiguration : EntityTypeConfiguration<Location>
-    {
-        public LocationConfiguration()
-        {
-            HasMany(e => e.Organization)
-            .WithRequired(e => e.Location);
         }
     }
 }

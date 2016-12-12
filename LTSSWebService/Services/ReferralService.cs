@@ -586,15 +586,31 @@ namespace LTSSWebService
 
             //  End of ContactEntity persisting
 
+            // ReferralsSent -> SourceOrganization
+            var RSSO = screenings
+                ?.Select(x => x?.ReferralsSent)
+                ?.SelectManySafely(x => x)
+                ?.Select(a => new Organization
+                {
+                    OrganizationBranchName = a?.SourceOrganization?.OrganizationBranchName?.Value,
+                    OrganizationCode = a?.SourceOrganization?.OrganizationCode?.Value.ToSafeString(), // is Enum
+                    OrganizationIdentification = a?.SourceOrganization?.OrganizationIdentification?.IdentificationID?.Value,
+                    OrganizationName = a?.SourceOrganization?.OrganizationName?.Value,
+                    OrganizationUnitName = a?.SourceOrganization?.OrganizationUnitName?.Value
+                });
+
+            var RSSOResponse = context.SaveOrganization(RSSO?.ToArray());
+
             // ReferralsSent -> SourceOrganization -> OrganizationLocation -> LocationContactInformation
             var RSSOOLCISkipTakeLengths = RSSOOLCI?.Select(x => x?.Select(y => new[] { 0, y?.Count() ?? 0 }))
                 ?.SelectManySafely(x => x)?.SelectManySafely(x => x);
 
             // ReferralsSent -> SourceOrganization -> OrganizationLocation
             var RSSOOL = screenings?.Select(x =>
-                x?.ReferralsSent?.Select(y =>
-                    y?.SourceOrganization?.OrganizationLocation?.Select(z => new Location
+                x?.ReferralsSent?.Zip(RSSOResponse, (a, b) =>
+                    a?.SourceOrganization?.OrganizationLocation?.Select(z => new Location
                     {
+                        OrganizationID = b.OrganizationID,
                         LocationName = z?.LocationName?.Value,
                         LatitudeDegreeValue = z?.Item?.GeographicCoordinateLatitude?.LatitudeDegreeValue?.Value,
                         LatitudeMinuteValue = z?.Item?.GeographicCoordinateLatitude?.LatitudeMinuteValue?.Value,
@@ -614,21 +630,20 @@ namespace LTSSWebService
             var RSSOCISkipTakeLengths = RSSOCI?.Select(x => x?.Select(y => new[] { 0, y?.Count() ?? 0 }))
                 ?.SelectManySafely(x => x)?.SelectManySafely(x => x);
 
-            // ReferralsSent -> SourceOrganization
-            var RSSO = screenings
+            // ReferralsSent -> DestinationOrganization
+            var RSDO = screenings
                 ?.Select(x => x?.ReferralsSent)
                 ?.SelectManySafely(x => x)
-                ?.Zip(RSSOOLResponse, (a, b) => new Organization
+                ?.Select(a => new Organization
                 {
-                    LocationID = b?.LocationID,
-                    OrganizationBranchName = a?.SourceOrganization?.OrganizationBranchName?.Value,
-                    OrganizationCode = a?.SourceOrganization?.OrganizationCode?.Value.ToSafeString(), // is Enum
-                    OrganizationIdentification = a?.SourceOrganization?.OrganizationIdentification?.IdentificationID?.Value,
-                    OrganizationName = a?.SourceOrganization?.OrganizationName?.Value,
-                    OrganizationUnitName = a?.SourceOrganization?.OrganizationUnitName?.Value
+                    OrganizationBranchName = a?.DestinationOrganization?.OrganizationBranchName?.Value,
+                    OrganizationCode = a?.DestinationOrganization?.OrganizationCode?.Value.ToSafeString(), // is Enum
+                    OrganizationIdentification = a?.DestinationOrganization?.OrganizationIdentification?.IdentificationID?.Value,
+                    OrganizationName = a?.DestinationOrganization?.OrganizationName?.Value,
+                    OrganizationUnitName = a?.DestinationOrganization?.OrganizationUnitName?.Value
                 });
 
-            var RSSOResponse = context.SaveOrganization(RSSO?.ToArray());
+            var RSDOResponse = context.SaveOrganization(RSDO?.ToArray());
 
             // ReferralsSent -> DestinationOrganization -> OrganizationLocation -> LocationContactInformation
             var RSDOOLCISkipTakeLengths = RSDOOLCI?.Select(x => x?.Select(y => new[] { 0, y?.Count() ?? 0 }))
@@ -636,9 +651,10 @@ namespace LTSSWebService
 
             // ReferralsSent -> DestinationOrganization -> OrganizationLocation
             var RSDOOL = screenings?.Select(x =>
-                x?.ReferralsSent?.Select(y =>
-                    y?.DestinationOrganization?.OrganizationLocation?.Select(z => new Location
+                x?.ReferralsSent?.Zip(RSDOResponse, (a, b) =>
+                    a?.DestinationOrganization?.OrganizationLocation?.Select(z => new Location
                     {
+                        OrganizationID = b.OrganizationID,
                         LocationName = z?.LocationName?.Value,
                         LatitudeDegreeValue = z?.Item?.GeographicCoordinateLatitude?.LatitudeDegreeValue?.Value,
                         LatitudeMinuteValue = z?.Item?.GeographicCoordinateLatitude?.LatitudeMinuteValue?.Value,
@@ -657,22 +673,6 @@ namespace LTSSWebService
             // ReferralsSent -> DestinationOrganization -> OrganizationPrimaryContactInformation
             var RSDOCISkipTakeLengths = RSDOCI?.Select(x => x?.Select(y => new[] { 0, y?.Count() ?? 0 }))
                 ?.SelectManySafely(x => x)?.SelectManySafely(x => x);
-
-            // ReferralsSent -> DestinationOrganization
-            var RSDO = screenings
-                ?.Select(x => x?.ReferralsSent)
-                ?.SelectManySafely(x => x)
-                ?.Zip(RSDOOLResponse, (a, b) => new Organization
-                {
-                    LocationID = b?.LocationID,
-                    OrganizationBranchName = a?.DestinationOrganization?.OrganizationBranchName?.Value,
-                    OrganizationCode = a?.DestinationOrganization?.OrganizationCode?.Value.ToSafeString(), // is Enum
-                    OrganizationIdentification = a?.DestinationOrganization?.OrganizationIdentification?.IdentificationID?.Value,
-                    OrganizationName = a?.DestinationOrganization?.OrganizationName?.Value,
-                    OrganizationUnitName = a?.DestinationOrganization?.OrganizationUnitName?.Value
-                });
-
-            var RSDOResponse = context.SaveOrganization(RSDO?.ToArray());
 
             // ReferralsSent
             var RSScreeningIDs = screenings?.Select(x => x?.ReferralsSent?.Select(y => x?.ScreeningID?.IdentificationID?.Value))?.SelectManySafely(x => x);
@@ -719,6 +719,21 @@ namespace LTSSWebService
 
             context.AddRange<Referral>(RS);
 
+            // ReferralsIdentified -> SourceOrganization
+            var RISO = screenings
+                ?.Select(x => x?.ReferralsIdentified)
+                ?.SelectManySafely(x => x)
+                ?.Select(a => new Organization
+                {
+                    OrganizationBranchName = a?.SourceOrganization?.OrganizationBranchName?.Value,
+                    OrganizationCode = a?.SourceOrganization?.OrganizationCode?.Value.ToSafeString(), // is Enum
+                    OrganizationIdentification = a?.SourceOrganization?.OrganizationIdentification?.IdentificationID?.Value,
+                    OrganizationName = a?.SourceOrganization?.OrganizationName?.Value,
+                    OrganizationUnitName = a?.SourceOrganization?.OrganizationUnitName?.Value
+                });
+
+            var RISOResponse = context.SaveOrganization(RISO?.ToArray());
+
             // ReferralsIdentified -> SourceOrganization -> OrganizationLocation -> LocationContactInformation
 
             var RISOOLCISkipTakeLengths = RISOOLCI?.Select(x => x?.Select(y => new[] { 0, y?.Count() ?? 0 }))
@@ -726,9 +741,10 @@ namespace LTSSWebService
 
             // ReferralsIdentified -> SourceOrganization -> OrganizationLocation
             var RISOOL = screenings?.Select(x =>
-                x?.ReferralsIdentified?.Select(y =>
-                    y?.SourceOrganization?.OrganizationLocation?.Select(z => new Location
+                x?.ReferralsIdentified?.Zip(RISOResponse, (a, b) =>
+                    a?.SourceOrganization?.OrganizationLocation?.Select(z => new Location
                     {
+                        OrganizationID = b.OrganizationID,
                         LocationName = z?.LocationName?.Value,
                         LatitudeDegreeValue = z?.Item?.GeographicCoordinateLatitude?.LatitudeDegreeValue?.Value,
                         LatitudeMinuteValue = z?.Item?.GeographicCoordinateLatitude?.LatitudeMinuteValue?.Value,
@@ -748,21 +764,20 @@ namespace LTSSWebService
             var RISOCISkipTakeLengths = RISOCI?.Select(x => x?.Select(y => new[] { 0, y?.Count() ?? 0 }))
                 ?.SelectManySafely(x => x)?.SelectManySafely(x => x);
 
-            // ReferralsIdentified -> SourceOrganization
-            var RISO = screenings
+            // ReferralsIdentified -> DestinationOrganization
+            var RIDO = screenings
                 ?.Select(x => x?.ReferralsIdentified)
                 ?.SelectManySafely(x => x)
-                ?.Zip(RISOOLResponse, (a, b) => new Organization
+                ?.Select(a => new Organization
                 {
-                    LocationID = b?.LocationID,
-                    OrganizationBranchName = a?.SourceOrganization?.OrganizationBranchName?.Value,
-                    OrganizationCode = a?.SourceOrganization?.OrganizationCode?.Value.ToSafeString(), // is Enum
-                    OrganizationIdentification = a?.SourceOrganization?.OrganizationIdentification?.IdentificationID?.Value,
-                    OrganizationName = a?.SourceOrganization?.OrganizationName?.Value,
-                    OrganizationUnitName = a?.SourceOrganization?.OrganizationUnitName?.Value
+                    OrganizationBranchName = a?.DestinationOrganization?.OrganizationBranchName?.Value,
+                    OrganizationCode = a?.DestinationOrganization?.OrganizationCode?.Value.ToSafeString(), // is Enum
+                    OrganizationIdentification = a?.DestinationOrganization?.OrganizationIdentification?.IdentificationID?.Value,
+                    OrganizationName = a?.DestinationOrganization?.OrganizationName?.Value,
+                    OrganizationUnitName = a?.DestinationOrganization?.OrganizationUnitName?.Value
                 });
 
-            var RISOResponse = context.SaveOrganization(RISO?.ToArray());
+            var RIDOResponse = context.SaveOrganization(RIDO?.ToArray());
 
             // ReferralsIdentified -> DestinationOrganization -> OrganizationLocation -> LocationContactInformation
             var RIDOOLCISkipTakeLengths = RIDOOLCI?.Select(x => x?.Select(y => new[] { 0, y?.Count() ?? 0 }))
@@ -770,9 +785,10 @@ namespace LTSSWebService
 
             // ReferralsIdentified -> DestinationOrganization -> OrganizationLocation
             var RIDOOL = screenings?.Select(x =>
-                x?.ReferralsIdentified?.Select(y =>
-                    y?.DestinationOrganization?.OrganizationLocation?.Select(z => new Location
+                x?.ReferralsIdentified?.Zip(RIDOResponse, (a, b) =>
+                    a?.DestinationOrganization?.OrganizationLocation?.Select(z => new Location
                     {
+                        OrganizationID = b.OrganizationID,
                         LocationName = z?.LocationName?.Value,
                         LatitudeDegreeValue = z?.Item?.GeographicCoordinateLatitude?.LatitudeDegreeValue?.Value,
                         LatitudeMinuteValue = z?.Item?.GeographicCoordinateLatitude?.LatitudeMinuteValue?.Value,
@@ -791,22 +807,6 @@ namespace LTSSWebService
             // ReferralsIdentified -> DestinationOrganization -> OrganizationPrimaryContactInformation
             var RIDOCISkipTakeLengths = RIDOCI?.Select(x => x?.Select(y => new[] { 0, y?.Count() ?? 0 }))
                 ?.SelectManySafely(x => x)?.SelectManySafely(x => x);
-
-            // ReferralsIdentified -> DestinationOrganization
-            var RIDO = screenings
-                ?.Select(x => x?.ReferralsIdentified)
-                ?.SelectManySafely(x => x)
-                ?.Zip(RIDOOLResponse, (a, b) => new Organization
-                {
-                    LocationID = b?.LocationID,
-                    OrganizationBranchName = a?.DestinationOrganization?.OrganizationBranchName?.Value,
-                    OrganizationCode = a?.DestinationOrganization?.OrganizationCode?.Value.ToSafeString(), // is Enum
-                    OrganizationIdentification = a?.DestinationOrganization?.OrganizationIdentification?.IdentificationID?.Value,
-                    OrganizationName = a?.DestinationOrganization?.OrganizationName?.Value,
-                    OrganizationUnitName = a?.DestinationOrganization?.OrganizationUnitName?.Value
-                });
-
-            var RIDOResponse = context.SaveOrganization(RIDO?.ToArray());
 
             // ReferralsIdentified
             var RIScreeningIDs = screenings?.Select(x => x?.ReferralsIdentified?.Select(y => x?.ScreeningID?.IdentificationID?.Value))?.SelectManySafely(x => x);
@@ -901,7 +901,7 @@ namespace LTSSWebService
             {
                 ContactEntityID = y?.ContactEntityID ?? 0,
                 ContactEntityType = ContactEntityType.OR.ToSafeString(),
-                EntityID = b?.LocationID.ToSafeString()
+                EntityID = b?.OrganizationID.ToSafeString()
             }))
             ?.SelectManySafely(x => x)
             ?.ToArray();
@@ -919,7 +919,7 @@ namespace LTSSWebService
             {
                 ContactEntityID = y?.ContactEntityID ?? 0,
                 ContactEntityType = ContactEntityType.OR.ToSafeString(),
-                EntityID = b?.LocationID.ToSafeString()
+                EntityID = b?.OrganizationID.ToSafeString()
             }))
             ?.SelectManySafely(x => x)
             ?.ToArray();
@@ -937,7 +937,7 @@ namespace LTSSWebService
             {
                 ContactEntityID = y?.ContactEntityID ?? 0,
                 ContactEntityType = ContactEntityType.OR.ToSafeString(),
-                EntityID = b?.LocationID.ToSafeString()
+                EntityID = b?.OrganizationID.ToSafeString()
             }))
             ?.SelectManySafely(x => x)
             ?.ToArray();
@@ -955,7 +955,7 @@ namespace LTSSWebService
             {
                 ContactEntityID = y?.ContactEntityID ?? 0,
                 ContactEntityType = ContactEntityType.OR.ToSafeString(),
-                EntityID = b?.LocationID.ToSafeString()
+                EntityID = b?.OrganizationID.ToSafeString()
             }))
             ?.SelectManySafely(x => x)
             ?.ToArray();
