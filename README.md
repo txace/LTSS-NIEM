@@ -40,7 +40,7 @@ When a referral id is sent from LTSS, its associated SendReferralRequestPayloadT
    ```
 - Deploy the updated code making sure to preserve your existing app.config file.
 - Assuming your app.config file is pointing to your production database, run
-    ```sh
+   ```
    update-database
    ```
    to make sure your database has the latest schema.
