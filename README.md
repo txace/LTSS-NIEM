@@ -37,7 +37,7 @@ When a referral id is sent from LTSS, its associated SendReferralRequestPayloadT
    delete Referral
    delete Screening
 
-   update Request SET IsProcessed = 0
+   update Request SET IsProcessed = 0, Exception = NULL
    ```
 - Deploy the updated code making sure to preserve your existing app.config file.
 - Assuming your app.config file is pointing to your production database, run
