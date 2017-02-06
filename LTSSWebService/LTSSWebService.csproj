@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ApplicationExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ApplicationExtensions.1.0.2\lib\net452\ApplicationExtensions.dll</HintPath>
+      <HintPath>..\packages\ApplicationExtensions.1.0.3\lib\net452\ApplicationExtensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -87,9 +87,11 @@
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Organization.cs" />
     <Compile Include="Entities\Referral.cs" />
+    <Compile Include="Entities\Email.cs" />
     <Compile Include="Entities\Screening.cs" />
     <Compile Include="Entities\EntityContactEntity.cs" />
     <Compile Include="Entities\EntityEvent.cs" />
+    <Compile Include="EmailHelper.cs" />
     <Compile Include="JsonSerializer.cs" />
     <Compile Include="Migrations\201609291747517_Initial-Migration.cs" />
     <Compile Include="Migrations\201609291747517_Initial-Migration.Designer.cs">
@@ -104,6 +106,11 @@
     <Compile Include="Migrations\201612091817315_MovedConstraintFromOrganizationToLocation.Designer.cs">
       <DependentUpon>201612091817315_MovedConstraintFromOrganizationToLocation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701201528145_AddedEmailTable.cs" />
+    <Compile Include="Migrations\201701201528145_AddedEmailTable.Designer.cs">
+      <DependentUpon>201701201528145_AddedEmailTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ReferralSummary.cs" />
     <Compile Include="NormalizeData.cs" />
     <Compile Include="IServiceExtensions.cs" />
     <Compile Include="IService.cs" />
@@ -203,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612091817315_MovedConstraintFromOrganizationToLocation.resx">
       <DependentUpon>201612091817315_MovedConstraintFromOrganizationToLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701201528145_AddedEmailTable.resx">
+      <DependentUpon>201701201528145_AddedEmailTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

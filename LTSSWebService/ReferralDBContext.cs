@@ -102,6 +102,8 @@ namespace LTSSWebService.Models
 
         public DbSet<ContactEntity> ContactEntity { get; set; }
 
+        public DbSet<Email> Email { get; set; }
+
         public DbSet<Enrollment> Enrollment { get; set; }
 
         public DbSet<EntityContactEntity> EntityContactEntity { get; set; }

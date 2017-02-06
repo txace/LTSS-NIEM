@@ -49,6 +49,7 @@ namespace LTSSWebService
                                                                 ConfigurationManager.AppSettings["LTSSPassword"], RequestID, ReferralID));
 
                     System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
 
                     var ReferralInfo = client.retrieveReferralInfo(new LTSSReferralManagementService.RetrieveReferralInfoInputMessage());
                     ((Action)(NormalizeData.Normalize)).FireAndForget();
@@ -843,7 +844,7 @@ namespace LTSSWebService
                     ReferralReason = x?.Screening?.ReferralReason?.Value,
                     ReferralReasonCode = x?.Screening?.ReferralReasonCode?.Value.ToSafeString(),
                     ReferralStatusCode = x?.Screening?.ReferralStatusCode?.Value.ToSafeString(),
-                    ReferralType = "S", // Sent
+                    ReferralType = "I", // Identified
                     ReferralUpdatedBy = x?.Screening?.ReferralUpdatedBy?.Value,
                     ReferralUpdatedDate = x?.Screening?.ReferralUpdatedDate?.Value,
                     ScreeningID = x?.ScreeningID,

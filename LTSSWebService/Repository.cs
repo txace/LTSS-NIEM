@@ -1,4 +1,5 @@
-﻿using Application.Data.XML;
+﻿using Application.Data;
+using Application.Data.XML;
 using Application.ExceptionExtensions;
 using Application.GenericExtensions;
 using Application.IEnumerableExtensions;
@@ -8,7 +9,9 @@ using LTSSWebService.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace LTSSWebService
@@ -78,6 +81,14 @@ namespace LTSSWebService
             }
         }
 
+        public static List<Email> GetEmails()
+        {
+            using (var context = ReferralDbContext.Create(0))
+            {
+                return context.Email.ToList();
+            }
+        }
+
         public static List<Screening> GetScreenings(this ReferralDbContext context, IEnumerable<string> screeningIDs)
         {
             var localContext = context ?? new ReferralDbContext();
@@ -111,6 +122,38 @@ namespace LTSSWebService
             {
                 return context.Request.Where(x => !x.IsProcessed && x.Exception == null)
                                 .OrderBy(x => x.RequestDate).ToList().TakeWhile(x => x.ResponseData != null).ToList();
+            }
+        }
+
+        public static Dictionary<string, string> ReferralInfo(string referralID)
+        {
+            using (var conn = new SqlConnection(ConfigurationManager.AppSettings["WebDevConnectionString"]))
+            {
+                var Data = conn.Query(@"select r.ReferralID,
+	                r.ReferralReason,
+	                c.PersonFullName,
+	                c.PersonSSNIdentification,
+	                c.PersonBirthDate,
+	                c.ContactTelephoneNumber,
+	                c.SEXCode,
+	                c.RACCode,
+	                c.ContactMailingAddress,
+	                e.ProgramName, e.PlanName, e.StartDate as EnrollmentDate, s.*, l.LocationName  from referral r
+                join Organization o on r.DestinationOrganizationID = o.OrganizationID
+                join Location l on o.OrganizationID = l.OrganizationID
+                join Screening s on r.ScreeningID = s.ScreeningID
+                join Enrollment e on s.ScreeningID = e.ScreeningID
+                join EntityContactEntity ec on s.ScreeningID = ec.EntityID
+                join ContactEntity c on ec.ContactEntityID = c.ContactEntityID
+                where ec.ContactEntityType in ('CI', 'SA', 'PA', 'CR') AND r.ReferralID = '" + referralID + "'");
+
+                return Data.First().Keys.Select(x => new
+                {
+                    Key = x,
+                    Value = Data.Select(y => y[x]).Where(y => !string.IsNullOrWhiteSpace(y)).FirstOrDefault()
+                })
+                .Where(x => x.Value != null)
+                .ToDictionary(x => x.Key, x => x.Value);
             }
         }
 
@@ -329,7 +372,51 @@ namespace LTSSWebService
                     throw new Exception("The ScreeningID: " + ExistingScreeningIDs.Aggregate(x => x, (result, x) => result + ", " + x) + " has already been sent.");
 
                 SendReferralService.SaveScreenings(Screenings, context);
+
                 context.Commit();
+
+                var Summaries = Screenings.Select(x => x?.ReferralsSent)?.SelectManySafely(x => x)?.Select(x =>
+                    new ReferralSummary
+                    {
+                        ReferralID = x?.ReferralID?.IdentificationID?.Value,
+                        ReferralReason = x?.ReferralReason?.Value,
+                        LocationName = x?.DestinationOrganization?.OrganizationLocation?.FirstOrDefault()?.LocationName?.Value
+                    })
+                    ?.Concat(Screenings.Select(x => x?.ReferralsIdentified)?.SelectManySafely(x => x)?.Select(x =>
+                    new ReferralSummary
+                    {
+                        ReferralID = x?.ReferralID?.IdentificationID?.Value,
+                        ReferralReason = x?.ReferralReason?.Value,
+                        LocationName = x?.DestinationOrganization?.OrganizationLocation?.FirstOrDefault()?.LocationName?.Value
+                    })).ToArray();
+
+                SendReferralNotificationEmails(requestID, Summaries);
+            }
+        }
+
+        public static void SendReferralNotificationEmails(int requestID, IList<ReferralSummary> summaries)
+        {
+            var Emails = GetEmails();
+            var SummaryEmails = summaries.Select(x => Emails.Where(y => x.LocationName.ToLower().Contains(y.LocationName.ToLower())).Select(y => new
+            {
+                x.ReferralID,
+                x.ReferralReason,
+                Email = y
+            }))
+            .SelectMany(x => x).ToArray();
+
+            foreach (var summaryEmail in SummaryEmails)
+            {
+                try
+                {
+                    var Email = summaryEmail.Email;
+                    EmailHelper.SendEmail(Email.To, Email.From, "Referral " + summaryEmail.ReferralID + ": " + summaryEmail.ReferralReason, Email.Body,
+                        Email.SmtpClient, Email.UseSSL, null, Email.UserName, Email.Password);
+                }
+                catch (Exception e)
+                {
+                    Repository.SaveException(requestID, e);
+                }
             }
         }
 

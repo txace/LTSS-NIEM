@@ -7,6 +7,7 @@ namespace DigestPasswordNS
         public static Binding CreateBinding()
         {
             System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
 
             var Encoding = new TextMessageEncodingBindingElement();
             Encoding.MessageVersion = MessageVersion.Soap12;
